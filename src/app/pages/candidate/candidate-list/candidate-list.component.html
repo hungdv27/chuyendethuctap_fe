@@ -1,0 +1,29 @@
+<div class="candi">
+  <nz-tabset
+    nzType="line"
+    nzSize="large"
+    [nzTabPosition]="'left'"
+    style="height: 564px"
+  >
+    <nz-tab nzTitle="1. Thông tin cơ bản">
+      <ng-template nz-tab>
+        <app-info-candidate [id]="id"></app-info-candidate>
+      </ng-template>
+    </nz-tab>
+    <nz-tab nzTitle="2. Kinh nghiệm làm việc">
+      <ng-template nz-tab>
+        <app-experience-candidate [id]="id"></app-experience-candidate>
+      </ng-template>
+    </nz-tab>
+    <nz-tab nzTitle="3. Trình độ học vấn">
+      <ng-template nz-tab>
+        <app-level-candidate [id]="id"></app-level-candidate>
+      </ng-template>
+    </nz-tab>
+    <nz-tab nzTitle="4. Tiến trình" *ngIf="checkRole">
+      <ng-template nz-tab>
+        <app-process-candidate></app-process-candidate>
+      </ng-template>
+    </nz-tab>
+  </nz-tabset>
+</div>

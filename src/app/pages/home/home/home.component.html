@@ -1,0 +1,114 @@
+<div class="layout">
+  <div class="layout-header">
+    <div class="chart col-4">
+      <div class="content-text">
+        <h1 style="font-size: 19px;font-weight: 600;">Danh Sách </h1>
+        <div style="font-size: 19px;
+        font-weight: 600; margin-top: -0.5rem;">Ứng tuyển</div>
+        <ul>
+          <li>Số lượng : <span style="color: rgb(24, 215, 17)">30</span></li>
+        </ul>
+      </div>
+      <div class="content-chart">
+        <nz-progress [nzPercent]="100" nzType="circle"></nz-progress>
+      </div>
+    </div>
+    <div class="chart col-4">
+      <div class="content-text">
+        <h1 style="font-size: 19px;font-weight: 600;">Danh Sách </h1>
+        <div style="font-size: 19px;
+        font-weight: 600; margin-top: -0.5rem;">Đạt CV</div>
+        <ul>
+          <li>Đỗ : <span style="color: rgb(24, 215, 17)">28</span></li>
+          <li>
+            Trượt :
+            <span style="color: red">2</span>
+          </li>
+          <!-- <li>Số lượng : <span style="color: rgb(24, 215, 17)">30</span></li> -->
+        </ul>
+      </div>
+      <div class="content-chart">
+        <nz-progress [nzPercent]="93" nzType="circle"></nz-progress>
+      </div>
+    </div>
+    <div class="chart col-4">
+      <div class="content-text">
+        <h1 style="font-size: 19px;font-weight: 600;">Danh Sách </h1>
+        <div style="font-size: 19px;
+        font-weight: 600; margin-top: -0.5rem;">Đạt PV</div>
+        <ul>
+          <li>Đỗ : <span style="color: rgb(24, 215, 17)">10</span></li>
+          <li>
+            Trượt :
+            <span style="color: red">20</span>
+          </li>
+        </ul>
+      </div>
+      <div class="content-chart">
+        <nz-progress [nzPercent]="33" nzType="circle"></nz-progress>
+      </div>
+    </div>
+    <div class="chart col-4">
+      <div class="content-text">
+        <h1 style="font-size: 19px;font-weight: 600;">Danh Sách </h1>
+        <div style="font-size: 19px;
+        font-weight: 600; margin-top: -0.5rem;">Kết quả</div>
+        <ul>
+          <li>Đỗ : <span style="color: rgb(24, 215, 17)">3</span></li>
+          <li>
+            Trượt :
+            <span style="color: red">27</span>
+          </li>
+        </ul>
+      </div>
+      <div class="content-chart">
+        <nz-progress nz-tooltip nzTitle="3 done / 3 in progress / 4 to do" nzType="circle" [nzPercent]="10"
+          ></nz-progress>
+      </div>
+    </div>
+  </div>
+  <div class="layout-content">
+    <div class="list-table">
+      <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <!-- <th nzWidth="70px" class="custom-table__header">Thao tác</th> -->
+            <th nzWidth="40px" class="custom-table__header" style="text-align: center">
+              STT
+            </th>
+
+            <th nzWidth="80px" nzSortKey="name" class="text-center custom-table__header" style="text-align: center">
+              Ứng tuyển
+            </th>
+            <th nzWidth="80px" nzSortKey="price" class="text-center custom-table__header" style="text-align: center">
+              Đạt CV
+            </th>
+            <th nzWidth="80px" nzSortKey="price" class="text-center custom-table__header" style="text-align: center">
+              Đạt PV
+            </th>
+            <th nzWidth="120px" nzSortKey="promotion" class="text-center custom-table__header"
+              style="text-align: center">
+              Trúng tuyển
+            </th>
+            <th nzWidth="80px" nzSortKey="quantity" class="text-center custom-table__header" style="text-align: center">
+              Trượt
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center">1</td>
+
+
+            <td style="text-align: center">{{lst.ungtuyen}}</td>
+            <td style="text-align: center">{{lst.datCV}}</td>
+            <td style="text-align: center">{{lst.datPV}}</td>
+            <td style="text-align: center">{{lst.trungtuyen}}</td>
+            <td style="text-align: center">{{lst.truot}}</td>
+
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

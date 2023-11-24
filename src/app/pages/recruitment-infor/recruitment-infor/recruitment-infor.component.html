@@ -1,0 +1,181 @@
+<h1 style="color: #2f416d">THÔNG TIN TUYỂN DỤNG</h1>
+<div nz-row class="search">
+  <div class="mt-2">
+    <nz-input-group [nzSize]="'large'">
+      <div nz-row [nzGutter]="8">
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="5"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="15" nzFor="email" style="color: #2f416d"
+            >Mã đợt tuyển dụng</nz-form-label
+          >
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              style="color: #2f416d"
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="code"
+            />
+          </nz-form-control>
+        </div>
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="22" nzFor="email"
+            >Ngày bắt đầu đượt tuyển dụng</nz-form-label
+          >
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="startDate"
+            />
+          </nz-form-control>
+        </div>
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="22" nzFor="email"
+            >Ngày kết thúc đợt tuyển dụng</nz-form-label
+          >
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="endDate"
+            />
+          </nz-form-control>
+        </div>
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="5"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="13" nzFor="email">Trình độ</nz-form-label>
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="position"
+            />
+          </nz-form-control>
+        </div>
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="5"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="13" nzFor="email"
+            >Vị trí tuyển dụng</nz-form-label
+          >
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="title"
+            />
+          </nz-form-control>
+        </div>
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="5"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="13" nzFor="email">Số lượng</nz-form-label>
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="quantity"
+            />
+          </nz-form-control>
+        </div>
+      </div>
+    </nz-input-group>
+  </div>
+</div>
+<h2>YÊU CẦU</h2>
+<div class="list-yeucau">
+  <ul>
+    <li>Yêu cầu kinh nghiệm ít nhất 6 tháng</li>
+    <li>Có kiến thức cơ bản về quy trình phát triển phần mềm</li>
+    <li>Có kiến thức cơ bản về kỹ thuật kiểm thử, Test case, test checklist</li>
+    <li>Kỹ năng sử dụng SQL khá</li>
+    <li>Có tư duy logic, kỹ năng phân tích yêu cầu phần mềm</li>
+    <li>
+      Có khả năng giao tiếp tốt, cẩn thận, tỉ mỉ, học hỏi nhanh và có nhiều ý
+      tưởng sáng tạo
+    </li>
+    <li>
+      Từng có kinh nghiệm tham gia dự án thực tế trên 3 tháng là một lợi thế
+    </li>
+    <li>Có chứng chỉ Ngoại Ngữ (Tiếng Anh hoặc Tiếng Nhật) là một lợi thế</li>
+  </ul>
+</div>
+<h2>MÔ TẢ CÔNG VIỆC</h2>
+<div class="list-mota">
+  <ul>
+    <li>Xem xét yêu cầu phần mềm và chuẩn bị các kịch bản thử nghiệm</li>
+    <li>Thực hiện các bài kiểm tra về khả năng sử dụng phần mềm</li>
+    <li>
+      Phân tích kết quả kiểm tra và tác dộng cơ sở dữ liệu hoặc lỗi và khả năng
+      sử dụng
+    </li>
+    <li>
+      Chuẩn bị báo cáo về tất cả các khía cạnh liên quan đến thử nghiệm phần mềm
+      và gửi cho nhóm thiết kế
+    </li>
+    <li>Tương tác với khách hàng để hiểu các yêu cầu sản phẩm</li>
+    <li>
+      Tham gia đánh giá phần mềm và cung cấp đầu vào theo yêu cầu, thiết kế sản
+      phẩm và phát hiện các vấn đề tiềm ẩn
+    </li>
+  </ul>
+</div>
+<div class="footer" style="padding: 26px 16px 16px">
+  <button (click)="ungTuyen()" class="close" nz-button nzGhost>
+    ỨNG TUYỂN NGAY
+  </button>
+</div>

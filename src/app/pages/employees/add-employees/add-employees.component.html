@@ -1,0 +1,162 @@
+<div nz-row class="search">
+  <h1 style="color: #2f416d">THÊM MỚI CÁN BỘ TUYỂN DỤNG</h1>
+
+  <nz-divider
+    nzText="Thông tin cán bộ nhân sự"
+    nzOrientation="left"
+    style="margin-bottom: 1rem"
+  ></nz-divider>
+  <nz-input-group [nzSize]="'large'">
+    <div nz-row [nzGutter]="8">
+      <div
+        nz-form
+        [formGroup]="validateForm"
+        (ngSubmit)="createUser()"
+        nz-col
+        nzSpan="5"
+        class="input-size"
+      >
+        <nz-form-label [nzSpan]="13" nzFor="email"
+          >Tên cán bộ tuyển dụng</nz-form-label
+        >
+
+        <nz-form-control [nzSpan]="20">
+          <input
+            id="employeeName"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+          />
+        </nz-form-control>
+      </div>
+
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label>
+        <nz-form-control [nzSpan]="20">
+          <input type="text" nz-input formControlName="homeTowwn" />
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="email">Giới tính</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="gender"
+              (ngModelChange)="genderChange($event)"
+            >
+              <nz-option nzValue="nam" nzLabel="nam"></nz-option>
+              <nz-option nzValue="nữ" nzLabel="nữ"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="12" nzFor="email">Số điện thoại</nz-form-label>
+        <nz-form-control [nzSpan]="20">
+          <input type="text" nz-input formControlName="phone" />
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="12" nzFor="email">Email</nz-form-label>
+        <nz-form-control [nzSpan]="20"
+          ><input type="text" nz-input formControlName="emial" />
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="12" nzFor="email">Ngày sinh</nz-form-label>
+
+        <nz-form-control [nzSpan]="20">
+          <nz-date-picker
+            style="font-size: 31px; border-radius: 7px; width: 15rem"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"
+            nzFormat="dd/MM/yyyy "
+            formControlName="birthDate"
+          ></nz-date-picker>
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="16" nzFor="email"
+          >Ngày vào công ty</nz-form-label
+        >
+
+        <nz-form-control [nzSpan]="20"
+          ><nz-date-picker
+            style="font-size: 31px; border-radius: 7px; width: 15rem"
+            [(ngModel)]="dateoff"
+            (ngModelChange)="onChange($event)"
+            nzFormat="dd/MM/yyyy "
+            formControlName="dateOff"
+          ></nz-date-picker>
+        </nz-form-control>
+      </div>
+    </div>
+  </nz-input-group>
+  <!-- <nz-divider
+    nzText="Thông tin đăng nhập"
+    nzOrientation="left"
+    style="margin-bottom: 1rem"
+  ></nz-divider>
+  <nz-input-group [nzSize]="'large'">
+    <div nz-row [nzGutter]="8">
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="13" nzFor="email">Tên đăng nhập</nz-form-label>
+        <nz-form-control [nzSpan]="20">
+          <input type="text" nz-input formControlName="userName" />
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-label [nzSpan]="13" nzFor="email">Mật khẩu</nz-form-label>
+        <nz-form-control [nzSpan]="20"
+          ><input type="text" nz-input formControlName="password" />
+        </nz-form-control>
+      </div>
+      <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="8" nzFor="emai">Phân quyền</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="role"
+              formControlName="role"
+              (ngModelChange)="roleChange($event)"
+            >
+              <nz-option nzValue="admin" nzLabel="admin"></nz-option>
+              <nz-option nzValue="user" nzLabel="user"></nz-option>
+            </nz-select>
+            <div class="form-group">
+              <div
+                *ngIf="
+                  validateForm.controls['role'].invalid &&
+                  (validateForm.controls['role'].dirty ||
+                    validateForm.controls['role'].touched)
+                "
+              >
+                <div *ngIf="validateForm.controls['role'].errors">
+                  <div
+                    class="text-erorr"
+                    *ngIf="validateForm.controls['role'].errors?.['required']"
+                  >
+                    "Phân quyền" là trường bắt buộc!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </nz-input-group> -->
+</div>
+
+<div class="footer" style="padding: 26px 16px 16px">
+  <button class="add-order-btn" (click)="createUser()" nz-button nzGhost>
+    Thêm mới
+  </button>
+  <button class="close" (click)="close()" nz-button nzGhost>Đóng</button>
+</div>

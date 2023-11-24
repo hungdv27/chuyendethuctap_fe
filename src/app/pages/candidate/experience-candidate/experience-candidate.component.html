@@ -1,0 +1,227 @@
+<div class="candi-info">
+  <div class="header">
+    <div class="hed-text"><h1>Kinh nghiệm làm việc</h1></div>
+
+    <div class="header-btn">
+      <button class="add-order-btn" nz-button (click)="showAdd()">
+        Thêm mới
+        <span nz-icon nzType="user-add" nzTheme="outline"> </span>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-info">
+      <div class="list-table">
+        <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
+          <thead>
+            <tr>
+              <th nzWidth="70px" class="custom-table__header">Thao tác</th>
+              <th nzWidth="50px" class="custom-table__header">STT</th>
+
+              <th
+                nzWidth="120px"
+                nzSortKey="id"
+                class="text-center custom-table__header"
+              >
+                Tên công ty
+              </th>
+              <th
+                nzWidth="120px"
+                nzSortKey="name"
+                class="text-center custom-table__header"
+              >
+                Ngày tham gia
+              </th>
+              <th
+                nzWidth="120px"
+                nzSortKey="price"
+                class="text-center custom-table__header"
+              >
+                Ngày kết thúc
+              </th>
+              <th
+                nzWidth="120px"
+                nzSortKey="promotion"
+                class="text-center custom-table__header"
+              >
+                Chức danh
+              </th>
+              <th
+                nzWidth="170px"
+                nzSortKey="quantity"
+                class="text-center custom-table__header"
+              >
+                Công việc đảm nhận
+              </th>
+
+              <!-- <th
+                nzWidth="90px"
+                nzSortKey="describe"
+                class="text-center custom-table__header"
+              >
+                Size dự án
+              </th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of lstData; let i = index">
+              <td style="text-align: center">
+                <app-button
+                  [iconType]="'delete'"
+                  [buttonType]="'text'"
+                  nz-popconfirm
+                  nzPopconfirmTitle="Are you sure?"
+                  (btnClick)="deleteTD(data.id)"
+                >
+                </app-button>
+              </td>
+
+              <td style="text-align: center">{{ i + 1 }}</td>
+              <td style="text-align: center">{{ data.companyName }}</td>
+
+              <td style="text-align: center">{{ data.startDate }}</td>
+              <td style="text-align: center">{{ data.endDate }}</td>
+              <td style="text-align: center">{{ data.title }}</td>
+              <td style="text-align: center">{{ data.endDate }}</td>
+              <!-- <td style="text-align: center">ViettinBank</td> -->
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+    <!-- <div class="content-table"> -->
+
+    <!-- </div> -->
+  </div>
+</div>
+<nz-modal
+  nzWidth="890px"
+  [(nzVisible)]="isAdd"
+  nzTitle="Thêm mới kinh nghiệm làm việc"
+>
+  <ng-container *nzModalContent>
+    <nz-input-group [nzSize]="'large'">
+      <div nz-row [nzGutter]="6">
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <nz-form-control>
+            <input
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="companyName"
+              placeholder="Tên công ty"
+            />
+          </nz-form-control>
+        </div>
+
+        <div
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="firstName"
+                    placeholder="Ngày tham gia"
+                  /> -->
+            <nz-date-picker
+              formControlName="startDate"
+              nzPlaceHolder="Ngày tham gia"
+              style="font-size: 31px; border-radius: 7px; width: 15rem"
+              nzFormat="dd/MM/yyyy "
+            ></nz-date-picker>
+            <br />
+          </nz-form-control>
+        </div>
+
+        <div
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="birthDate"
+                    placeholder="Ngày kết thúc"
+                  /> -->
+            <nz-date-picker
+              formControlName="endDate"
+              nzPlaceHolder="Ngày kết thúc"
+              style="font-size: 31px; border-radius: 7px; width: 15rem"
+              nzFormat="dd/MM/yyyy "
+            ></nz-date-picker>
+          </nz-form-control>
+        </div>
+
+        <div
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="gender"
+                    placeholder="Chuyên ngành"
+                  /> -->
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="title"
+              nzPlaceHolder="Chức danh"
+            >
+              <nz-option nzValue="INTERN" nzLabel="INTERN"></nz-option>
+              <nz-option nzValue="FRESHER" nzLabel="FRESHER"></nz-option>
+              <nz-option nzValue="JUNIOR" nzLabel="JUNIOR"></nz-option>
+              <nz-option nzValue="MIDDLE" nzLabel="MIDDLE"></nz-option>
+              <nz-option nzValue="SENIOR" nzLabel="SENIOR"></nz-option>
+              <nz-option nzValue="MANAGER" nzLabel="MANAGER"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </div>
+
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <nz-form-control>
+            <input
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="work"
+              placeholder="Công việc đảm nhận"
+            />
+          </nz-form-control>
+        </div>
+      </div>
+    </nz-input-group>
+  </ng-container>
+  <ng-container *nzModalFooter
+    ><button class="add-order-btn" nz-button (click)="addOk()">Thêm mới</button>
+    <button class="add-order-btn" nz-button (click)="addCancel()">
+      Đóng
+    </button></ng-container
+  >
+</nz-modal>

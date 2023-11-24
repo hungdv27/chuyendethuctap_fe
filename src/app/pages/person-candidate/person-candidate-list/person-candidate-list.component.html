@@ -1,0 +1,278 @@
+<div>
+  <h1 class="title">DANH SÁCH ỨNG VIÊN</h1>
+  <div nz-row [hidden]="isHidden" class="search">
+    <nz-input-group [nzSize]="'large'">
+      <div nz-row [nzGutter]="8">
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+            [(ngModel)]="searchtextCode"
+            type="text"
+            nz-input
+            formControlName="employeeCode"
+            placeholder="Mã ứng viên"
+          />
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+            [(ngModel)]="searchtextName"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+            placeholder="Họ và tên"
+          />
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+            [(ngModel)]="searchtextPhone"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+            placeholder="Số điện thoại"
+          />
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+            [(ngModel)]="searchtextEmail"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+            placeholder="Email"
+          />
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+          [(ngModel)]="searchtextKyNang"
+          type="text"
+          nz-input
+          formControlName="employeeName"
+          placeholder="Kỹ năng"
+        >
+        </div>
+
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <input
+          [(ngModel)]="searchtextNumberOf"
+          type="text"
+          nz-input
+          formControlName="employeeName"
+          placeholder="Số năm kinh nghiệm"
+        >
+
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <nz-select
+            [(ngModel)]="searchtextLevel"
+            [nzAllowClear]="true"
+            [nzSize]="'large'"
+            formControlName="employeeName"
+            nzPlaceHolder="Trình độ"
+          >
+            <nz-option nzValue="INTERN" nzLabel="INTERN"></nz-option>
+            <nz-option nzValue="FRESHER" nzLabel="FRESHER"></nz-option>
+            <nz-option nzValue="JUNIOR" nzLabel="JUNIOR"></nz-option>
+            <nz-option nzValue="MIDDLE" nzLabel="MIDDLE"></nz-option>
+            <nz-option nzValue="SENIOR" nzLabel="SENIOR"></nz-option>
+            <nz-option nzValue="MANAGER" nzLabel="MANAGER"></nz-option>
+          </nz-select>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5">
+          <nz-select
+            [(ngModel)]="searchtextStatus"
+            [nzAllowClear]="true"
+            [nzSize]="'large'"
+            formControlName="employeeName"
+            nzPlaceHolder="Trạng thái"
+          >
+            <nz-option nzValue="DANH_GIA" nzLabel="Đánh giá CV"></nz-option>
+            <nz-option nzValue="PV" nzLabel="Phỏng vấn"></nz-option>
+            <nz-option nzValue="TV" nzLabel="Tham vấn lương"></nz-option>
+            <nz-option nzValue="OFFER" nzLabel="Nhận offer"></nz-option>
+            <nz-option nzValue="CANCEL" nzLabel="Từ chối"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </nz-input-group>
+  </div>
+
+  <nz-row nzJustify="space-between">
+    <nz-row nzJustify="start">
+      <button class="search-order-btn" nz-button (click)="search()">
+        Tìm kiếm
+        <span nz-icon nzType="search" nzTheme="outline"></span>
+      </button>
+      <em
+        class="iconReload"
+        nz-icon
+        nzType="reload"
+        nzTheme="outline"
+        (click)="resetForm()"
+      ></em>
+    </nz-row>
+    <button class="add-order-btn" nz-button (click)="createProduct()">
+      Thêm mới
+      <!-- <span nz-icon nzType="plus" nzTheme="outline"></span> -->
+      <span nz-icon nzType="user-add" nzTheme="outline"> </span>
+    </button>
+  </nz-row>
+
+  <!-- <div nz-row class="mb-0" style="width: 100%">
+    <div class="list__container" style="width: inherit">
+      <div class="list__head">
+        <div class="list__head-left"> -->
+  <div class="list-table">
+    <nz-table
+      [nzFrontPagination]="false"
+      [nzData]="lstData.content"
+      nzTableLayout="fixed"
+    >
+      <thead>
+        <tr>
+          <th nzWidth="70px" class="custom-table__header">Thao tác</th>
+          <th nzWidth="40px" class="custom-table__header">STT</th>
+
+          <th
+            nzWidth="80px"
+            nzSortKey="id"
+            class="text-center custom-table__header"
+          >
+            Mã ứng viên
+          </th>
+          <th
+            nzWidth="120px"
+            nzSortKey="name"
+            class="text-center custom-table__header"
+          >
+            Tên ứng viên
+          </th>
+          <th
+            nzWidth="120px"
+            nzSortKey="price"
+            class="text-center custom-table__header"
+          >
+            Ngày sinh
+          </th>
+          <th
+            nzWidth="80px"
+            nzSortKey="promotion"
+            class="text-center custom-table__header"
+          >
+            Giới tính
+          </th>
+          <th
+            nzWidth="120px"
+            nzSortKey="quantity"
+            class="text-center custom-table__header"
+          >
+            Quê quán
+          </th>
+          <th
+            nzWidth="120px"
+            nzSortKey="quantity"
+            class="text-center custom-table__header"
+          >
+            Số năm kinh nghiệm
+          </th>
+          <th
+            nzWidth="120px"
+            nzSortKey="describe"
+            class="text-center custom-table__header"
+          >
+            Trạng thái tuyển dụng
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of lstData.content; let idex = index">
+          <td style="text-align: center">
+            <app-button
+              [iconType]="'unordered-list'"
+              [buttonType]="'text'"
+              (btnClick)="editProduct(data.id)"
+            ></app-button>
+            <app-button
+              [iconType]="'delete'"
+              [buttonType]="'text'"
+              (btnClick)="deleteData(data.id)"
+            ></app-button>
+          </td>
+          <td style="text-align: center">
+            {{ lstData.totalPages * lstData.size + idex + 1 -10 }}
+            <!-- lstData.currentPage * lstData.size + i + 1 -->
+          </td>
+
+          <td style="text-align: center" [nz-tooltip]="data.candidateCode">
+            {{ data.candidateCode }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.fullName">
+            {{ data.fullName }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.birthDate">
+            {{ data.birthDate | date : "dd-MM-yyyy " }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.gender">
+            {{ data.gender }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.address">
+            {{ data.address }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.numberOfExp">
+            {{ data.numberOfExp }}
+          </td>
+          <td style="text-align: center" [nz-tooltip]="data.employeeName">
+            <!-- <nz-tag [nzColor]="'orange'">orange</nz-tag> -->
+
+            <ng-container
+              [ngTemplateOutlet]="link"
+              [ngTemplateOutletContext]="{ item: getStatus(data) }"
+            ></ng-container>
+            <ng-template #link let-item="item">
+              <nz-tag [nzColor]="item?.className">{{ item?.label }}</nz-tag>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+
+  <!-- <app-product-popup
+    [(isVisible)]="isVisibleDetail"
+    [dataFromParent]="dataPassToChild"
+  ></app-product-popup>
+  <app-modal-confirm
+    title="Xác nhận xóa"
+    [isDelete]="true"
+    [isVisible]="isVisibleModalDelete"
+    (callBack)="deleteProduct($event)"
+    (clickCancel)="onCancelModalDelete()"
+  ></app-modal-confirm> -->
+</div>
+<div
+  nz-row
+  class="list__pagination"
+  *ngIf="lstData.content?.length"
+  style="display: flex; justify-content: right"
+>
+  <app-pagination
+    [currentPage]="pageNumber"
+    [currentSize]="pageSize"
+    [total]="total"
+    (emitPage)="changeCurrentPage($event)"
+  ></app-pagination>
+</div>
+<!-- </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="pagi">
+  <nz-pagination
+    [nzPageIndex]="pageNumber"
+    [nzTotal]="total"
+    nzShowSizeChanger
+    [nzPageSize]="pageSize"
+  ></nz-pagination>
+</div> -->
+
+<app-delete-candidate
+  [(isVisible)]="isVisibleDetail"
+  [dataFromParent]="dataPassToChild"
+></app-delete-candidate>

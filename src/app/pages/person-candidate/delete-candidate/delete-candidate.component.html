@@ -1,0 +1,44 @@
+<nz-modal
+  class="popup"
+  [(nzVisible)]="isVisible"
+  nzTitle="Bạn có chắc chắn muốn xóa không?"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>
+    <h1 class="header">Xóa Ứng Viên</h1>
+  </ng-template>
+  <ng-template #modalContent>
+    <span class="text">Bạn có chắc chắn muốn xóa không?</span>
+  </ng-template>
+  <ng-template #modalFooter>
+    <div class="modal__footer-wrapper">
+      <div class="modal__footer-checkbox">
+        <label class="create-another" nz-checkbox> </label>
+      </div>
+
+      <div class="modal__footer-btn">
+        <button
+          (click)="delete()"
+          nz-button
+          buttonType="default"
+          nzDanger
+          class="delete"
+        >
+          Xóa
+        </button>
+        <button
+          (click)="Cancel()"
+          class="close"
+          nz-button
+          nzType="primary"
+          nzGhost
+        >
+          Hủy
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>

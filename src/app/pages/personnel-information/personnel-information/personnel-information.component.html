@@ -1,0 +1,145 @@
+<div nz-row class="search">
+  <h1 style="color: #2f416d; margin-bottom: 5rem">THÔNG TIN CÁ NHÂN</h1>
+
+  <div class="mt-5">
+    <nz-input-group [nzSize]="'large'">
+      <div nz-row [nzGutter]="8">
+        <div
+          nz-form
+          [formGroup]="validateForm"
+          nz-col
+          nzSpan="5"
+          class="input-size"
+        >
+          <nz-form-label [nzSpan]="13" nzFor="email">Mã ứng viên</nz-form-label>
+
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="employeeName"
+            />
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Họ và tên</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="homeTowwn"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Email</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="homeTowwn"
+            />
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Giới tính</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="phone"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email"
+            >Số điện thoại</nz-form-label
+          >
+          <nz-form-control [nzSpan]="20">
+            <input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="homeTowwn"
+            />
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Ngày sinh </nz-form-label>
+          <nz-form-control [nzSpan]="20"
+            ><input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="emial"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Địa chỉ</nz-form-label>
+          <nz-form-control [nzSpan]="20"
+            ><input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="emial"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Trình độ</nz-form-label>
+          <nz-form-control [nzSpan]="20"
+            ><input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="emial"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email">Kỹ năng</nz-form-label>
+          <nz-form-control [nzSpan]="20"
+            ><input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="emial"
+            />
+          </nz-form-control>
+        </div>
+        <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+          <nz-form-label [nzSpan]="12" nzFor="email"
+            >Số năm kinh nghiệm</nz-form-label
+          >
+          <nz-form-control [nzSpan]="20"
+            ><input
+              [nzBorderless]="true"
+              [readOnly]="true"
+              type="text"
+              nz-input
+              formControlName="emial"
+            />
+          </nz-form-control>
+        </div>
+      </div>
+    </nz-input-group>
+  </div>
+</div>

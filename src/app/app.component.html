@@ -1,0 +1,122 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    *ngIf="isMenu"
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <!-- <img src="assets\img\logo.png" /> -->
+        <h1>LP Technology</h1>
+      </a>
+    </div>
+    <!-- <ul class="colo" nz-menu nzMode="inline" style="background-color: #083761">
+      <li
+        nz-submenu
+        nzOpen
+        nzTheme="dark"
+        nzTitle="Thông tin"
+        nzIcon="form"
+        style="background-color: #083761"
+      >
+        <ul style="background-color: #083761">
+          <li nz-menu-item style="background-color: #083761">
+            Thông tin nhân viên
+          </li>
+          <li nz-menu-item style="background-color: #083761">tin ứng viên</li>
+        </ul>
+      </li>
+      <li
+        nz-submenu
+        nzOpen
+        nzTitle="Nhân Viên"
+        nzIcon="shop"
+        style="background-color: #083761"
+      >
+        <ul style="background-color: #083761">
+          <li nz-menu-item nzMatchRouter style="background-color: #083761">
+            <a routerLink="pnk/list">Thêm mới</a>
+          </li>
+          <li nz-menu-item nzMatchRouter style="background-color: #083761">
+            <a routerLink="pxk/list">Sửa</a>
+          </li>
+        </ul>
+      </li>
+    </ul> -->
+
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <!-- Tràn chủ : ảnh Cả nhân viên và ứng viên thấy-->
+      <li
+        nz-submenu
+        nzTitle="Trang chủ"
+        nzIcon="dashboard"
+        routerLink="/home"
+      ></li>
+      <!-- Tổ chức : ảnh Cả nhân viên và ứng viên thấy-->
+      <li
+        nz-submenu
+        nzTitle="Tổ chức"
+        nzIcon="dashboard"
+        routerLink="/organization"
+      ></li>
+      <!-- Nhân viên thấy tất cả
+           Ứng viên không thấy  -->
+      <li nz-submenu nzOpen nzTitle="Cán bộ tuyển dụng" nzIcon="dashboard">
+        <ul>
+          <!-- <li nz-menu-item nzMatchRouter>
+            <a routerLink="/personnel-information">Thông tin cá nhân</a>
+          </li> -->
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/employee">Danh sách cán bộ tuyển dụng</a>
+          </li>
+        </ul>
+      </li>
+      <!-- Nhân viên thấy tất cả -->
+      <li nz-submenu nzOpen nzTitle="Tuyển dụng" nzIcon="form">
+        <ul>
+          <!-- ứng viên thấy -->
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/recruitment-infor">Danh sách ứng viên</a>
+          </li>
+          <!-- Nhân viên thấy -->
+          <!-- <li nz-menu-item nzMatchRouter>
+            <a routerLink="/candidate">Việc cần làm</a>
+          </li> -->
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header *ngIf="isMenu">
+      <div class="app-header">
+        <span class="user">
+          <span class="logo">
+            <nz-image-group>
+              <img
+                nz-image
+                width="250px"
+                height="45px"
+                alt=""
+                nzSrc="../assets/image/Group-14049.png"
+              />
+            </nz-image-group>
+          </span>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

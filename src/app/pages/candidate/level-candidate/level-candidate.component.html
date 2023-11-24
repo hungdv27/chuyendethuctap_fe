@@ -1,0 +1,494 @@
+<div class="candi-info">
+  <div class="header">
+    <div class="hed-text"><h1>Trình độ học vấn</h1></div>
+
+    <div class="header-btn">
+      <!-- <app-button [iconType]="'edit'" [buttonType]="'text'"></app-button> -->
+      <button class="add-order-btn" nz-button (click)="showModal()">
+        Thêm mới
+        <span nz-icon nzType="user-add" nzTheme="outline"> </span>
+      </button>
+      <nz-modal
+        nzWidth="890px"
+        [(nzVisible)]="isVisible"
+        nzTitle="Thêm mới trình độ học vấn"
+      >
+        <ng-container *nzModalContent>
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div
+                nz-form
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size col-4"
+              >
+                <nz-form-control>
+                  <input
+                    id="employeeName"
+                    type="text"
+                    nz-input
+                    formControlName="eduName"
+                    placeholder="Tên trường"
+                  />
+                </nz-form-control>
+              </div>
+
+              <div
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size col-4"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="firstName"
+                    placeholder="Ngày tham gia"
+                  /> -->
+                  <nz-date-picker
+                    formControlName="startDate"
+                    nzPlaceHolder="Ngày tham gia"
+                    style="font-size: 31px; border-radius: 7px; width: 15rem"
+                    nzFormat="dd/MM/yyyy "
+                  ></nz-date-picker>
+                  <br />
+                </nz-form-control>
+              </div>
+
+              <div
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size col-4"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="birthDate"
+                    placeholder="Ngày kết thúc"
+                  /> -->
+                  <nz-date-picker
+                    formControlName="endDate"
+                    nzPlaceHolder="Ngày kết thúc"
+                    style="font-size: 31px; border-radius: 7px; width: 15rem"
+                    nzFormat="dd/MM/yyyy "
+                  ></nz-date-picker>
+                </nz-form-control>
+              </div>
+
+              <div
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size col-4"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="majors"
+                    placeholder="Chuyên ngành"
+                  />
+                  <!-- <nz-select
+                    [nzAllowClear]="true"
+                    [nzSize]="'large'"
+                    id="gender"
+                    formControlName="majors"
+                    nzPlaceHolder="Chuyên ngành"
+                  >
+                    <nz-option
+                      nzValue="CNTT"
+                      nzLabel="công nghệ thông tin"
+                    ></nz-option>
+                    <nz-option nzValue="KT" nzLabel="marketting"></nz-option>
+                  </nz-select> -->
+                </nz-form-control>
+              </div>
+
+              <div
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="phone"
+                    placeholder="Hình thức đào tạo"
+                  /> -->
+                  <nz-select
+                    [nzAllowClear]="true"
+                    [nzSize]="'large'"
+                    id="gender"
+                    formControlName="formOfTraining"
+                    nzPlaceHolder="Hình thức đào tạo"
+                  >
+                    <nz-option nzValue="Từ xa" nzLabel="Từ xa"></nz-option>
+                    <nz-option
+                      nzValue="Trực tiếp"
+                      nzLabel="Trực tiếp"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </div>
+              <div
+                [formGroup]="validateForm"
+                nz-col
+                nzSpan="7"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="email"
+                    placeholder="Trình độ học vấn"
+                  /> -->
+                  <nz-select
+                    [nzAllowClear]="true"
+                    [nzSize]="'large'"
+                    id="gender"
+                    formControlName="ceritfication"
+                    nzPlaceHolder="Trình độ học vấn"
+                  >
+                    <nz-option nzValue="Đại học" nzLabel="Đại học"></nz-option>
+                    <nz-option
+                      nzValue="Liên thông"
+                      nzLabel="Liên thông"
+                    ></nz-option>
+                    <nz-option
+                      nzValue="Cao đẳng"
+                      nzLabel="Cao đẳng"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </div>
+            </div>
+          </nz-input-group>
+        </ng-container>
+        <ng-container *nzModalFooter
+          ><button class="add-order-btn" nz-button (click)="handleOk()">
+            Lưu
+          </button>
+          <button class="add-order-btn" nz-button (click)="handleCancel()">
+            Đóng
+          </button></ng-container
+        >
+      </nz-modal>
+    </div>
+  </div>
+  <div class="content" *ngIf="lstData?.length > 0">
+    <nz-timeline *ngFor="let data of lstData">
+      <nz-timeline-item class="text">
+        <!-- Create a services site 2015-09-01 -->
+        <div class="timeline-content">
+          <div class="event-time">
+            <div class="title">
+              <span>{{ data.startDate }} </span>
+              <span> Đến </span>
+              <span> {{ data.endDate }}</span>
+            </div>
+            <div class="btn-section">
+              <app-button
+                [iconType]="'edit'"
+                [buttonType]="'text'"
+                (btnClick)="showEdit(data)"
+              ></app-button>
+              <app-button
+                [iconType]="'delete'"
+                [buttonType]="'text'"
+                nz-popconfirm
+                nzPopconfirmTitle="Are you sure?"
+                (btnClick)="deleteEdu(data.id)"
+              >
+              </app-button>
+            </div>
+          </div>
+          <div class="event-content">
+            <div class="event-name">
+              <span class="sp-text"> Tên cơ sở đào tạo :</span>
+              {{ data.eduName }}
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Chuyên ngành :</span>{{ data.majors }}
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Hình thức đào tạo :</span
+              >{{ data.formOfTraining }}
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Trình độ học vấn :</span>
+              {{ data.certification }}
+            </div>
+          </div>
+        </div>
+      </nz-timeline-item>
+      <!-- <nz-timeline-item>
+        <div class="timeline-content">
+          <div class="event-time">
+            <p class="title">2015-09-01</p>
+            <div class="btn-section">
+              <app-button
+                [iconType]="'edit'"
+                [buttonType]="'text'"
+              ></app-button>
+              <app-button
+                [iconType]="'delete'"
+                [buttonType]="'text'"
+                nz-popconfirm
+                nzPopconfirmTitle="Are you sure?"
+              >
+              </app-button>
+            </div>
+          </div>
+          <div class="event-content">
+            <div class="event-name">
+              <span class="sp-text"> Tên cơ sở đào tạo :</span> Đại học luật Hà
+              Nội
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Chuyên ngành :</span> Ngành kỹ thuật máy
+              tính
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Hình thức đào tạo :</span> Từ xa
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Trình độ học vấn :</span> Thạc sĩ
+            </div>
+          </div>
+        </div>
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div class="timeline-content">
+          <div class="event-time">
+            <p class="title">2015-09-01</p>
+            <div class="btn-section">
+              <app-button
+                [iconType]="'edit'"
+                [buttonType]="'text'"
+              ></app-button>
+              <app-button
+                [iconType]="'delete'"
+                [buttonType]="'text'"
+                nz-popconfirm
+                nzPopconfirmTitle="Are you sure?"
+              >
+              </app-button>
+            </div>
+          </div>
+          <div class="event-content">
+            <div class="event-name">
+              <span class="sp-text"> Tên cơ sở đào tạo :</span> Đại học luật Hà
+              Nội
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Chuyên ngành :</span> Ngành kỹ thuật máy
+              tính
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Hình thức đào tạo :</span> Từ xa
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Trình độ học vấn :</span> Thạc sĩ
+            </div>
+          </div>
+        </div>
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div class="timeline-content">
+          <div class="event-time">
+            <p class="title">2015-09-01</p>
+            <div class="btn-section">
+              <app-button
+                [iconType]="'edit'"
+                [buttonType]="'text'"
+              ></app-button>
+              <app-button
+                [iconType]="'delete'"
+                [buttonType]="'text'"
+                nz-popconfirm
+                nzPopconfirmTitle="Are you sure?"
+              >
+              </app-button>
+            </div>
+          </div>
+          <div class="event-content">
+            <div class="event-name">
+              <span class="sp-text"> Tên cơ sở đào tạo :</span> Đại học luật Hà
+              Nội
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Chuyên ngành :</span> Ngành kỹ thuật máy
+              tính
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Hình thức đào tạo :</span> Từ xa
+            </div>
+            <div class="event-name">
+              <span class="sp-text">Trình độ học vấn :</span> Thạc sĩ
+            </div>
+          </div>
+        </div></nz-timeline-item
+      > -->
+    </nz-timeline>
+  </div>
+</div>
+
+<nz-modal
+  nzWidth="890px"
+  [(nzVisible)]="isEdit"
+  nzTitle="Cập nhật trình độ học vấn"
+>
+  <ng-container *nzModalContent>
+    <nz-input-group [nzSize]="'large'">
+      <div nz-row [nzGutter]="6">
+        <div
+          nz-form
+          [formGroup]="formEdu"
+          nz-col
+          nzSpan="7"
+          class="input-size col-4"
+        >
+          <nz-form-control>
+            <input
+              id="employeeName"
+              type="text"
+              nz-input
+              formControlName="eduName"
+              placeholder="Tên trường"
+            />
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="formEdu" nz-col nzSpan="7" class="input-size col-4">
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+            type="text"
+            nz-input
+            formControlName="firstName"
+            placeholder="Ngày tham gia"
+          /> -->
+            <nz-date-picker
+              formControlName="startDate"
+              nzPlaceHolder="Ngày tham gia"
+              style="font-size: 31px; border-radius: 7px; width: 15rem"
+              nzFormat="dd/MM/yyyy "
+            ></nz-date-picker>
+            <br />
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="formEdu" nz-col nzSpan="7" class="input-size col-4">
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+            type="text"
+            nz-input
+            formControlName="birthDate"
+            placeholder="Ngày kết thúc"
+          /> -->
+            <nz-date-picker
+              formControlName="endDate"
+              nzPlaceHolder="Ngày kết thúc"
+              style="font-size: 31px; border-radius: 7px; width: 15rem"
+              nzFormat="dd/MM/yyyy "
+            ></nz-date-picker>
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="formEdu" nz-col nzSpan="7" class="input-size col-4">
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+            type="text"
+            nz-input
+            formControlName="gender"
+            placeholder="Chuyên ngành"
+          /> -->
+          <input
+          type="text"
+          nz-input
+          formControlName="majors"
+          placeholder="Chuyên ngành"
+        />
+            <!-- <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="majors"
+              nzPlaceHolder="Chuyên ngành"
+            >
+              <nz-option
+                nzValue="CNTT"
+                nzLabel="công nghệ thông tin"
+              ></nz-option>
+              <nz-option nzValue="KT" nzLabel="marketting"></nz-option>
+            </nz-select> -->
+          </nz-form-control>
+        </div>
+
+        <div [formGroup]="formEdu" nz-col nzSpan="7" class="input-size">
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+            type="text"
+            nz-input
+            formControlName="phone"
+            placeholder="Hình thức đào tạo"
+          /> -->
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="formOfTraining"
+              nzPlaceHolder="Hình thức đào tạo"
+            >
+              <nz-option nzValue="Từ xa" nzLabel="Từ xa"></nz-option>
+              <nz-option nzValue="Trực tiếp" nzLabel="Trực tiếp"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </div>
+        <div [formGroup]="formEdu" nz-col nzSpan="7" class="input-size">
+          <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+          <nz-form-control>
+            <!-- <input
+            type="text"
+            nz-input
+            formControlName="email"
+            placeholder="Trình độ học vấn"
+          /> -->
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="certification"
+              nzPlaceHolder="Trình độ học vấn"
+            >
+              <nz-option nzValue="Đại học" nzLabel="Đại học"></nz-option>
+              <nz-option nzValue="Liên thông" nzLabel="Liên thông"></nz-option>
+              <nz-option nzValue="Cao đẳng" nzLabel="Cao đẳng"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </div>
+      </div>
+    </nz-input-group>
+  </ng-container>
+  <ng-container *nzModalFooter
+    ><button class="add-order-btn" nz-button (click)="editEdu()">Lưu</button>
+    <button class="add-order-btn" nz-button (click)="editEduCancel()">
+      Đóng
+    </button></ng-container
+  >
+</nz-modal>

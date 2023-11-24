@@ -1,0 +1,18 @@
+<button
+  [disabled]="isDisable"
+  nz-button
+  [nzType]="buttonType"
+  (click)="onClick()"
+  [nzDanger]="isDanger"
+  [class]="className"
+  [style]="
+    buttonType == 'primary'
+      ? 'background-color : #59A657;  border-color : #59A657'
+      : ''
+  "
+  style="border-radius: 10px;"
+>
+  <span *ngIf="iconType" nz-icon [nzType]="iconType" nzTheme="outline"></span>
+  <span *ngIf="title">{{ title }}</span>
+</button>
+  

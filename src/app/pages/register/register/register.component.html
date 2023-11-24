@@ -1,0 +1,72 @@
+<div class="main">
+  <div class="main-left">
+    <div class="heade">
+      <img class="img-left" src="assets\image\Group-14049.png" />
+      <div class="text-hi">
+        <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+      </div>
+    </div>
+
+    <div class="login">
+      <form
+        nz-form
+        [formGroup]="validateForm"
+        class="login-form"
+        (ngSubmit)="submitForm()"
+      >
+        <nz-form-item>
+          <span class="name">Tên đăng nhập</span>
+          <nz-form-control nzErrorTip="Hãy nhập 'Tên đăng nhập'!">
+            <nz-input-group>
+              <input
+                type="text"
+                nz-input
+                formControlName="username"
+                placeholder="Nhập email hoặc SĐT"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <span class="pass">Mật khẩu</span>
+          <nz-form-control nzErrorTip="Hãy nhập 'Mật khẩu'!">
+            <nz-input-group>
+              <input
+                type="password"
+                nz-input
+                formControlName="password"
+                placeholder="Nhập mật khẩu"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <span class="pass2">Nhập Role</span>
+          <nz-form-control nzErrorTip="Hãy nhập Role!" [nzSpan]="13">
+            <nz-select
+              [nzAllowClear]="true"
+              [nzSize]="'large'"
+              id="gender"
+              formControlName="roles"
+              nzPlaceHolder="Chọn Role"
+            >
+              <nz-option nzValue="ADMIN" nzLabel="Quản trị viên"></nz-option>
+              <nz-option nzValue="HR" nzLabel="Quản trị nhân sự "></nz-option>
+              <nz-option nzValue="CANDIDATE" nzLabel="Ứng viên"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+        >
+          ĐĂNG KÝ
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="main-right">
+    <img src="assets\image\msg5466316462-63985.jpg" />
+  </div>
+</div>

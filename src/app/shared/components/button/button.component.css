@@ -1,0 +1,22 @@
+[nz-icon] {
+  font-size: 20px;
+}
+
+/* Thông tin dây chuyền sản xuất + BOM - Tình */
+.btn-search {
+  /* width: 200px; */
+  height: 20px;
+  border-radius: 10px;
+  height: 100%;
+  background-color: aquamarine;
+}
+
+.btn-search > span:first-child {
+  font-size: 16px;
+  color: #cccccc
+}
+
+.btn-search > span:last-child {
+  font-size: 16px;
+  color: #E7EDED
+}
