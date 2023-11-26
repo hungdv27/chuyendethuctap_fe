@@ -30,6 +30,9 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 registerLocaleData(en);
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 @NgModule({
   declarations: [
     CandidateListComponent,
@@ -63,6 +66,9 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzImageModule,
     NzCheckboxModule,
     NzDividerModule,
+    NzRadioModule,
+    NzTimePickerModule,
+    NzRateModule,
   ],
   exports: [CandidateListComponent],
 })

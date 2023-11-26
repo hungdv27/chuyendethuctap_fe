@@ -22,8 +22,11 @@
     </nz-tab>
     <nz-tab nzTitle="4. Tiến trình" *ngIf="checkRole">
       <ng-template nz-tab>
-        <app-process-candidate></app-process-candidate>
+        <app-process-candidate [id]="id"></app-process-candidate>
       </ng-template>
     </nz-tab>
   </nz-tabset>
+</div>
+<div>
+  <button class="add-order-btn" nz-button (click)="back()">Quay lại</button>
 </div>

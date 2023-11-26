@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SCROLL_TABLE } from 'src/app/utils/constrant';
 import { ORDER } from '../../model/user.model';
 import { EmployeeService } from 'src/app/service/employee';
+import { RecruitInterviewService } from 'src/app/service/interview.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -28,21 +29,23 @@ export class EmployeeListComponent implements OnInit {
   public pageSize: number = 10;
   total = 0;
 
-  lstData: ORDER = {
-    content: [],
-    currentPage: 1,
-    size: 10,
-    totalElements: 0,
-    totalPages: 1,
-    first: 0,
-    numberOfElements: 0,
-  };
+  // lstData: ORDER = {
+  //   content: [],
+  //   currentPage: 1,
+  //   size: 10,
+  //   totalElements: 0,
+  //   totalPages: 1,
+  //   first: 0,
+  //   numberOfElements: 0,
+  // };
+  lstData: any;
   date = null;
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private RecruitInterviewService: RecruitInterviewService
   ) {}
   onChange(result: Date): void {}
   ngOnInit(): void {
@@ -91,8 +94,13 @@ export class EmployeeListComponent implements OnInit {
     //   },
     // ];
 
-    this.employeeService.getData().subscribe((value) => {
-      console.log('value employee page', value);
+    // this.employeeService.getData().subscribe((value) => {
+    //   console.log('value employee page', value);
+    // });
+    this.RecruitInterviewService.getDataEmployee().subscribe((res) => {
+      console.log('res', res);
+      this.lstData = res;
+      console.log(' this.lstTable', this.lstData);
     });
   }
   changeCurrentPage(currentPage: any) {

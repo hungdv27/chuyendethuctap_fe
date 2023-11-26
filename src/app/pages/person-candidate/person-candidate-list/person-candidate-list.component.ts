@@ -102,13 +102,14 @@ export class PersonCandidateListComponent implements OnInit {
     //   },s
     // ];
     this.candidateListService
-      .getData(this.searchtextCode ,
+      .getData(
+        this.searchtextCode,
         this.searchtextName,
         this.searchtextPhone,
         this.searchtextEmail,
         this.searchtextNumberOf,
         this.searchtextLevel,
-        this.lstData.totalPages -1 ,
+        this.lstData.totalPages - 1,
         this.lstData.size
       )
       .subscribe((value) => {
@@ -166,16 +167,47 @@ export class PersonCandidateListComponent implements OnInit {
   // }
   statusChange(value: string): void {}
   getStatus(item: any) {
-    switch (item?.isActive) {
-      case 1:
+    console.log('ststua', item.status);
+    switch (item?.status) {
+      case 'CHO_DANH_GIA':
         return {
           className: 'success',
-          label: 'Đang làm',
+          label: 'Chờ đánh giá',
         };
-      case 2:
+      case 'DANH_GIA':
         return {
           className: 'danger',
-          label: 'Đã nghỉ làm',
+          label: 'Đánh giá',
+        };
+      case 'PHONG_VAN':
+        return {
+          className: 'success',
+          label: 'Phỏng vấn',
+        };
+      case 'THAM_GIA_PHONG_VAN':
+        return {
+          className: 'danger',
+          label: 'Tham gia phỏng vấn',
+        };
+      case 'KET_QUA_PHONG_VAN':
+        return {
+          className: 'success',
+          label: 'Kết quả phỏng vấn',
+        };
+      case 'KET_LUAN_DONG_Y':
+        return {
+          className: 'danger',
+          label: 'Đạt phỏng vấn',
+        };
+      case 'KET_LUAN_TU_CHOI':
+        return {
+          className: 'success',
+          label: 'Không đạt phỏng vấn',
+        };
+      case 'TU_CHOI':
+        return {
+          className: 'success',
+          label: 'Từ chối',
         };
       default:
         return {

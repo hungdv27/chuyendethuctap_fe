@@ -1,798 +1,934 @@
-<div class="steps">
-  <nz-steps [nzCurrent]="current" nzSize="small" *ngIf="access">
-    <!-- <nz-step nzTitle="Tạo mới"></nz-step> -->
-    <nz-step nzTitle="Đánh giá CV"></nz-step>
-    <!-- <nz-step nzTitle="Liên hệ ứng viên"></nz-step> -->
-    <nz-step nzTitle="Lên lịch phỏng vấn"></nz-step>
-    <nz-step nzTitle="Phỏng vấn"></nz-step>
-    <!-- <nz-step nzTitle="Nhân sự xử lý"></nz-step> -->
-    <nz-step nzTitle="Kết luận tuyển dụng"></nz-step>
-  </nz-steps>
-  <nz-steps
-    [nzCurrent]="current"
-    nzSize="small"
-    *ngIf="!access"
-    nzStatus="error"
-  >
-    <!-- <nz-step nzTitle="Tạo mới"></nz-step> -->
-    <nz-step nzTitle="Đánh giá CV"></nz-step>
-    <!-- <nz-step nzTitle="Liên hệ ứng viên"></nz-step> -->
-    <nz-step nzTitle="Lên lịch phỏng vấn"></nz-step>
-    <nz-step nzTitle="Phỏng vấn"></nz-step>
-    <!-- <nz-step nzTitle="Nhân sự xử lý"></nz-step> -->
-    <nz-step nzTitle="Kết luận tuyển dụng"></nz-step>
-  </nz-steps>
-</div>
-<div class="candi-info">
-  <div class="header"></div>
-  <div class="content">
-    <!--Show review cv -->
-    <div class="danhGiaCV" *ngIf="showReviewCV">
-      <div class="title">
-        <h1>Đánh giá CV</h1>
-        <div class="inline"></div>
-      </div>
-      <div class="content-danhgia col-4">
-        <div class="content-detail">
-          <div class="employee-name">LP00012 - Nguyễn Văn An</div>
-          <div class="employee-title">Mobile Leader</div>
-          <div class="info-desc">
-            Phòng ban :
-            <span class="info-desc--content"
-              >Trung tâm phát triển phần mềm</span
-            >
-          </div>
-          <div class="info-desc">
+<div class="scoll">
+  <div class="steps">
+    <nz-steps [nzCurrent]="current" nzSize="small" *ngIf="access">
+      <!-- <nz-step nzTitle="Tạo mới"></nz-step> -->
+      <nz-step nzTitle="Đánh giá CV"></nz-step>
+      <!-- <nz-step nzTitle="Liên hệ ứng viên"></nz-step> -->
+      <nz-step nzTitle="Lên lịch phỏng vấn"></nz-step>
+      <nz-step nzTitle="Phỏng vấn"></nz-step>
+      <!-- <nz-step nzTitle="Nhân sự xử lý"></nz-step> -->
+      <nz-step nzTitle="Kết luận tuyển dụng"></nz-step>
+    </nz-steps>
+    <nz-steps
+      [nzCurrent]="current"
+      nzSize="small"
+      *ngIf="!access"
+      nzStatus="error"
+    >
+      <!-- <nz-step nzTitle="Tạo mới"></nz-step> -->
+      <nz-step nzTitle="Đánh giá CV"></nz-step>
+      <!-- <nz-step nzTitle="Liên hệ ứng viên"></nz-step> -->
+      <nz-step nzTitle="Lên lịch phỏng vấn"></nz-step>
+      <nz-step nzTitle="Phỏng vấn"></nz-step>
+      <!-- <nz-step nzTitle="Nhân sự xử lý"></nz-step> -->
+      <nz-step nzTitle="Kết luận tuyển dụng"></nz-step>
+    </nz-steps>
+  </div>
+  <div class="candi-info">
+    <div class="header"></div>
+    <div class="content">
+      <!--Show review cv -->
+      <div class="danhGiaCV" *ngIf="showReviewCV">
+        <div class="title">
+          <h1>Đánh giá CV</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              {{ viewListDG.employeeCode }} - {{ viewListDG.fullName }}
+            </div>
+            <!-- <div class="employee-title">{{viewListDG.position}}</div> -->
+            <div class="info-desc">
+              Phòng ban :
+              <span class="info-desc--content">{{
+                viewListDG.department
+              }}</span>
+            </div>
+            <!-- <div class="info-desc">
             Cấp bậc :
-            <span class="info-desc--content">Fresher </span>
-          </div>
-          <div class="info-desc">
-            Vị trí :
-            <span class="info-desc--content">Nhân viên </span>
-          </div>
-          <div class="info-desc">
+            <span class="info-desc--content">{{ viewListDG.rank }} </span>
+          </div>-->
+            <div class="info-desc">
+              Chức danh :
+              <span class="info-desc--content">{{ viewListDG.jobTitle }}</span>
+            </div>
+            <!-- <div class="info-desc">
             Ngày đánh giá :
-            <span class="info-desc--content"> </span>
-          </div>
-          <div class="btn-ft" *ngIf="checkBtn">
-            <div class="hr-btn approved-btn mr-2" (click)="approve()">
-              Chấp nhận
+            <span class="info-desc--content">{{ viewListDG.note }} </span>
+          </div> -->
+            <div class="btn-ft" *ngIf="checkBtn">
+              <div
+                class="hr-btn approved-btn mr-2"
+                (click)="approve(viewListDG)"
+              >
+                Chấp nhận
+              </div>
+              <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div>
             </div>
-            <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Giai đoạn phỏng vấn == 4 -->
-    <div class="lichphongvan" *ngIf="showLichPvan">
-      <div class="title">
-        <h1>Lịch hẹn phỏng vấn</h1>
-        <div class="inline"></div>
-      </div>
-      <div class="content-danhgia col-4">
-        <div class="content-detail">
-          <div class="employee-name">Hình thức phỏng vấn : Trực tiếp</div>
-          <div class="employee-title">Lịch hẹn phỏng vấn :</div>
-          <div class="employee-title">Thời gian phong vấn :</div>
-          <div class="employee-title">Địa điểm phỏng vấn :</div>
-          <div class="employee-title">Ghi chú :</div>
-          <div class="employee-name">LP00012 - Nguyễn Văn An</div>
-          <div class="employee-title">Mobile Leader</div>
-
-          <div class="btn-ft" *ngIf="btnPvan">
-            <div class="hr-btn approved-btn mr-2" (click)="thamGia()">
-              Tham gia
-            </div>
-            <div class="hr-btn declined-btn" (click)="tuChoi()">Từ chối</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Phong vấn và đánh giá ứng viên -->
-    <div class="danhGiaCV" *ngIf="showPhongVanVaDanhGia">
-      <div class="title">
-        <h1>Phỏng vấn</h1>
-        <div class="inline"></div>
-      </div>
-      <div class="content-danhgia col-4">
-        <div class="content-detail">
-          <div class="employee-name">Mức lương mong muốn</div>
-          <div class="employee-title">Thời gian tăng lương mong muốn</div>
-          <div class="employee-title">Ghi chú</div>
-          <div class="btn-ft">
-            <div
-              class="hr-btn approved-btn mr-2"
-              *ngIf="!XemDanhGia"
-              (click)="danhGiaUV()"
-            >
-              Đánh giá ứng viên
+      <!-- view sau khi từ chối -->
+      <div class="danhGiaCV" *ngIf="showReviewCVTuChoi">
+        <div class="title">
+          <h1>Đánh giá CV</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              {{ lstShowViewNV.employeeCode }} - {{ lstShowViewNV.fullName }}
             </div>
-            <div
-              class="hr-btn approved-btn mr-2"
-              *ngIf="XemDanhGia"
-              (click)="xemDanhGia()"
-            >
-              Xem đánh giá
+            <!-- <div class="employee-title">{{viewListDG.position}}</div> -->
+            <div class="info-desc">
+              Phòng ban :
+              <span class="info-desc--content">{{
+                lstShowViewNV.department
+              }}</span>
             </div>
-            <!-- <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div> -->
+            <!-- <div class="info-desc">
+      Cấp bậc :
+      <span class="info-desc--content">{{ viewListDG.rank }} </span>
+    </div>-->
+            <div class="info-desc">
+              Chức danh :
+              <span class="info-desc--content">{{
+                lstShowViewNV.jobTitle
+              }}</span>
+            </div>
+            <!-- <div class="info-desc">
+      Ngày đánh giá :
+      <span class="info-desc--content">{{ viewListDG.note }} </span>
+    </div> -->
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Ứng viên đạt hoặc không đạt -->
-    <div class="danhGiaCV" *ngIf="showKetQuaDo">
-      <div class="title">
-        <h1 style="color: #56eb0d; margin-top: 1rem">Đỗ phỏng vấn</h1>
+      <!-- Hiển thị view đánh giá  -->
+      <div class="danhGiaCV" *ngIf="showReviewCVView">
+        <div class="title">
+          <h1>Đánh giá CV</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              {{ lstShowViewNV?.employeeCode }} - {{ lstShowViewNV?.fullName }}
+            </div>
+            <!-- <div class="employee-title">{{viewListDG.position}}</div> -->
+            <div class="info-desc">
+              Phòng ban :
+              <span class="info-desc--content">{{
+                lstShowViewNV?.department
+              }}</span>
+            </div>
+            <!-- <div class="info-desc">
+        Cấp bậc :
+        <span class="info-desc--content">{{ viewListDG.rank }} </span>
+      </div>-->
+            <div class="info-desc">
+              Chức danh :
+              <span class="info-desc--content">{{
+                lstShowViewNV?.jobTitle
+              }}</span>
+            </div>
+            <div class="info-desc">
+              Ngày đánh giá :
+              <span class="info-desc--content">{{ lstShowView?.note }} </span>
+            </div>
+            <!-- <div class="btn-ft" *ngIf="checkBtn">
+        <div class="hr-btn approved-btn mr-2" (click)="approve(viewListDG)">
+          Chấp nhận
+        </div>
+        <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div>
+      </div> -->
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="danhGiaCV" *ngIf="showKetQuaTruot">
-      <div class="title">
-        <h1 style="color: red; margin-top: 1rem">Trượt phỏng vấn</h1>
+      <!-- Giai đoạn phỏng vấn == 4 -->
+      <div class="lichphongvan" *ngIf="showLichPvan">
+        <div class="title">
+          <h1>Lịch hẹn phỏng vấn</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              Hình thức phỏng vấn : {{ lstLichPVAn.hinhthuc }}
+            </div>
+            <div class="employee-title">
+              Lịch hẹn phỏng vấn :{{ lstLichPVAn.date }}
+            </div>
+            <div class="employee-title">
+              Thời gian phỏng vấn :{{ lstLichPVAn.time }}
+            </div>
+            <div class="employee-title">
+              Địa điểm phỏng vấn :{{ lstLichPVAn.address }}
+            </div>
+            <div class="employee-title">Ghi chú :{{ lstLichPVAn.note }}</div>
+            <div class="employee-name">
+              {{ lstShowViewNV?.employeeCode }} - {{ lstShowViewNV?.fullName }}
+            </div>
+            <div class="employee-title">{{ lstShowViewNV?.jobTitle }}</div>
+
+            <div class="btn-ft" *ngIf="btnPvan">
+              <div class="hr-btn approved-btn mr-2" (click)="thamGia()">
+                Tham gia
+              </div>
+              <div class="hr-btn declined-btn" (click)="tuChoi()">Từ chối</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View xem lịch phỏng vấn -->
+      <div class="lichphongvan" *ngIf="showLichPvanView">
+        <div class="title">
+          <h1>Lịch hẹn phỏng vấn</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              Hình thức phỏng vấn : {{ lstShowView?.type }}
+            </div>
+            <div class="employee-title">
+              Lịch hẹn phỏng vấn :{{ lstShowView?.note }}
+            </div>
+            <div class="employee-title">
+              Thời gian phỏng vấn :{{ lstShowView?.time }}
+            </div>
+            <div class="employee-title">
+              Địa điểm phỏng vấn :{{ lstShowView?.address }}
+            </div>
+            <div class="employee-title">Ghi chú :{{ lstShowView?.notePV }}</div>
+            <div class="employee-name">
+              {{ lstShowViewNV?.employeeCode }} - {{ lstShowViewNV?.fullName }}
+            </div>
+            <div class="employee-title">{{ lstShowViewNV?.jobTitle }}</div>
+
+            <div class="btn-ft" *ngIf="btnPvan">
+              <div class="hr-btn approved-btn mr-2" (click)="thamGia()">
+                Tham gia
+              </div>
+              <div class="hr-btn declined-btn" (click)="tuChoi()">Từ chối</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View tham gia phỏng vấn -->
+      <div class="lichphongvan" *ngIf="showLichPvanViewThamGia">
+        <div class="title">
+          <h1>Lịch hẹn phỏng vấn</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              Hình thức phỏng vấn : {{ lstShowView?.type }}
+            </div>
+            <div class="employee-title">
+              Lịch hẹn phỏng vấn :{{ lstShowView?.note }}
+            </div>
+            <div class="employee-title">
+              Thời gian phỏng vấn :{{ lstShowView?.time }}
+            </div>
+            <div class="employee-title">
+              Địa điểm phỏng vấn :{{ lstShowView?.address }}
+            </div>
+            <div class="employee-title">Ghi chú :{{ lstShowView?.notePV }}</div>
+            <div class="employee-name">
+              {{ lstShowViewNV?.employeeCode }} - {{ lstShowViewNV?.fullName }}
+            </div>
+            <div class="employee-title">{{ lstShowViewNV?.jobTitle }}</div>
+
+            <!-- <div class="btn-ft" *ngIf="btnPvan">
+        <div class="hr-btn approved-btn mr-2" (click)="thamGia()">
+          Tham gia
+        </div>
+        <div class="hr-btn declined-btn" (click)="tuChoi()">Từ chối</div>
+      </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Phong vấn và đánh giá ứng viên -->
+      <div class="danhGiaCV" *ngIf="showPhongVanVaDanhGia">
+        <div class="title">
+          <h1>Phỏng vấn</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              Mức lương mong muốn: {{ lstPVan.salaryExpect }}
+            </div>
+            <div class="employee-title">
+              Thời gian tăng lương mong muốn: {{ lstPVan.timeIncreaseSalary }}
+            </div>
+            <div class="employee-title">Ghi chú : {{ lstPVan.noteKQ }}</div>
+            <div class="btn-ft">
+              <div
+                class="hr-btn approved-btn mr-2"
+                *ngIf="!XemDanhGia"
+                (click)="danhGiaUV()"
+              >
+                Đánh giá ứng viên
+              </div>
+              <div
+                class="hr-btn approved-btn mr-2"
+                *ngIf="XemDanhGia"
+                (click)="xemDanhGia()"
+              >
+                Xem đánh giá
+              </div>
+              <!-- <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- view phỏng vấn và đánh giá ứng viên -->
+      <div class="danhGiaCV" *ngIf="showPhongVanVaDanhGiaView">
+        <div class="title">
+          <h1>Phỏng vấn</h1>
+          <div class="inline"></div>
+        </div>
+        <div class="content-danhgia col-4">
+          <div class="content-detail">
+            <div class="employee-name">
+              Mức lương mong muốn: {{ lstShowView.salaryExpect }}
+            </div>
+            <div class="employee-title">
+              Thời gian tăng lương mong muốn:
+              {{ lstShowView.timeIncreaseSalary }}
+            </div>
+            <div class="employee-title">Ghi chú : {{ lstShowView.noteKQ }}</div>
+            <div class="btn-ft">
+              <div
+                class="hr-btn approved-btn mr-2"
+                *ngIf="!XemDanhGia"
+                (click)="danhGiaUV()"
+              >
+                Đánh giá ứng viên
+              </div>
+              <div
+                class="hr-btn approved-btn mr-2"
+                *ngIf="XemDanhGia"
+                (click)="xemDanhGia()"
+              >
+                Xem đánh giá
+              </div>
+              <!-- <div class="hr-btn declined-btn" (click)="refuse()">Từ chối</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ứng viên đạt hoặc không đạt -->
+      <div class="danhGiaCV" *ngIf="showKetQuaDo">
+        <div class="title">
+          <h1 style="color: #56eb0d; margin-top: 1rem">Đỗ phỏng vấn</h1>
+        </div>
+      </div>
+      <div class="danhGiaCV" *ngIf="showKetQuaTruot">
+        <div class="title">
+          <h1 style="color: red; margin-top: 1rem">Trượt phỏng vấn</h1>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="footer" *ngIf="showFooter">
-  <!-- Hủy -->
+  <div class="footer" *ngIf="showFooter">
+    <!-- Hủy -->
 
-  <button class="btn-Huy" nz-button (click)="HUY()">Hủy</button>
-  <!-- Đánh gia cv -->
-  <button class="btn-icon" nz-button (click)="showDanhGia()" *ngIf="btnDanhGia">
-    <span class="danhgia" nz-icon nzType="form" nzTheme="outline"> </span>
-  </button>
+    <!-- Đánh gia cv -->
+    <button
+      class="btn-icon"
+      nz-button
+      (click)="showDanhGia()"
+      *ngIf="btnDanhGia"
+      [nz-tooltip]="'Đánh giá CV'"
+    >
+      <span class="danhgia" nz-icon nzType="form" nzTheme="outline"> </span>
+    </button>
 
-  <nz-modal nzWidth="890px" [(nzVisible)]="danhGia" nzTitle="Đánh giá CV">
-    <ng-container *nzModalContent>
-      <div class="content-info">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Tìm kiếm mã nhân viên"
-                />
-              </nz-form-control>
+    <nz-modal nzWidth="890px" [(nzVisible)]="danhGia" nzTitle="Đánh giá CV">
+      <ng-container *nzModalContent>
+        <div class="content-info">
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="lst"
+                    placeholder="Tìm kiếm mã nhân viên"
+                  />
+                </nz-form-control>
+              </div>
             </div>
-          </div>
-          <button class="btn-search" nz-button (click)="showModal()">
-            Tìm kiếm
-            <span nz-icon nzType="search" nzTheme="outline"> </span>
-          </button>
-        </nz-input-group>
-      </div>
+            <button class="btn-search" nz-button (click)="showModal()">
+              Tìm kiếm
+              <span nz-icon nzType="search" nzTheme="outline"> </span>
+            </button>
+          </nz-input-group>
+        </div>
 
-      <div class="list-table">
-        <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
-          <thead>
-            <tr>
-              <th nzWidth="70px" class="custom-table__header">Thao tác</th>
-              <th nzWidth="60px" class="custom-table__header">STT</th>
+        <div class="list-table">
+          <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
+            <thead>
+              <tr>
+                <th nzWidth="70px" class="custom-table__header">Thao tác</th>
+                <th nzWidth="60px" class="custom-table__header">STT</th>
 
-              <th
-                nzWidth="80px"
-                nzSortKey="id"
-                class="text-center custom-table__header"
-              >
-                Mã nhân viên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="name"
-                class="text-center custom-table__header"
-              >
-                Họ tên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Chức danh
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Phòng ban
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center">
-                <!-- <app-button
+                <th
+                  nzWidth="80px"
+                  nzSortKey="id"
+                  class="text-center custom-table__header"
+                >
+                  Mã nhân viên
+                </th>
+                <th
+                  nzWidth="80px"
+                  nzSortKey="name"
+                  class="text-center custom-table__header"
+                >
+                  Họ tên
+                </th>
+                <th
+                  nzWidth="80px"
+                  nzSortKey="price"
+                  class="text-center custom-table__header"
+                >
+                  Chức danh
+                </th>
+                <th
+                  nzWidth="80px"
+                  nzSortKey="price"
+                  class="text-center custom-table__header"
+                >
+                  Phòng ban
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let itemList of lstTable">
+                <td style="text-align: center">
+                  <!-- <app-button
                   [iconType]="'delete'"
                   [buttonType]="'text'"
                   nz-popconfirm
                   nzPopconfirmTitle="Are you sure?"
                 >
                 </app-button> -->
-                <label nz-checkbox></label>
-              </td>
+                  <input
+                    type="radio"
+                    name="itemGroup"
+                    (click)="choose(itemList)"
+                  />
+                </td>
 
-              <td style="text-align: center">1</td>
-              <td style="text-align: center">101010101</td>
-              <td style="text-align: center">Nguyễn Văn An</td>
-              <td style="text-align: center">Mobile Lead</td>
-              <td style="text-align: center">Mobile Lead</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="danhGiaOk()">
-        Lưu
-      </button>
-      <button class="add-order-btn" nz-button (click)="danhGiaCancel()">
-        Đóng
-      </button></ng-container
+                <td style="text-align: center">{{ itemList.id }}</td>
+                <td style="text-align: center">{{ itemList.employeeCode }}</td>
+                <td style="text-align: center">{{ itemList.fullName }}</td>
+                <td style="text-align: center">{{ itemList.jobTitle }}</td>
+                <td style="text-align: center">{{ itemList.department }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </ng-container>
+      <ng-container *nzModalFooter
+        ><button class="add-order-btn" nz-button (click)="danhGiaOk()">
+          Lưu
+        </button>
+        <button class="add-order-btn" nz-button (click)="danhGiaCancel()">
+          Đóng
+        </button></ng-container
+      >
+    </nz-modal>
+
+    <!-- Liên hệ phỏng vấn  -->
+    <button
+      class="btn-icon"
+      nz-button
+      (click)="lienHePV()"
+      *ngIf="btnlienhe"
+      [nz-tooltip]="'Lên lịch phỏng vấn'"
     >
-  </nz-modal>
+      <span class="danhgia" nz-icon nzType="dollar" nzTheme="outline"></span>
+    </button>
 
-  <!-- Liên hệ phỏng vấn  -->
-  <button class="btn-icon" nz-button (click)="lienHePV()" *ngIf="btnlienhe">
-    <span
-      class="danhgia"
-      nz-icon
-      nzType="usergroup-delete"
-      nzTheme="outline"
-    ></span>
-  </button>
-
-  <nz-modal
-    nzWidth="890px"
-    [(nzVisible)]="lienHePVan"
-    nzTitle="Lịch phỏng vấn"
-    *ngIf="btnPhongVan"
-  >
-    <ng-container *nzModalContent>
-      <div class="content-info">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <!-- <input
-                type="text"
-                nz-input
-                formControlName="lst"
-                placeholder="Hình thức phỏng vấn"
-              /> -->
-                <nz-select
-                  [nzAllowClear]="true"
-                  [nzSize]="'large'"
-                  id="gender"
-                  formControlName="lst"
-                  nzPlaceHolder="Hình thức phỏng vấn"
-                >
-                  <nz-option nzValue="1" nzLabel="Trực tiếp"></nz-option>
-                  <nz-option nzValue="2" nzLabel="Online"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <!-- <input
+    <nz-modal
+      nzWidth="890px"
+      [(nzVisible)]="lienHePVan"
+      nzTitle="Lịch phỏng vấn"
+      *ngIf="btnPhongVan"
+    >
+      <ng-container *nzModalContent>
+        <div class="content-info">
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-control>
+                  <nz-select
+                    [nzAllowClear]="true"
+                    [nzSize]="'large'"
+                    id="gender"
+                    formControlName="hinhthuc"
+                    nzPlaceHolder="Hình thức phỏng vấn"
+                  >
+                    <nz-option
+                      nzValue="OFFLINE"
+                      nzLabel="Trực tiếp"
+                    ></nz-option>
+                    <nz-option nzValue="ONLINE" nzLabel="Online"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </div>
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
               type="text"
               nz-input
               formControlName="lst"
               placeholder="Ngày phỏng vấn"
             /> -->
-                <nz-date-picker
-                  formControlName="lst"
-                  nzPlaceHolder="Ngày tham gia"
-                  style="font-size: 31px; border-radius: 7px; width: 14rem"
-                  nzFormat="dd/MM/yyyy "
-                ></nz-date-picker>
-              </nz-form-control>
+                  <nz-date-picker
+                    formControlName="date"
+                    nzPlaceHolder="Ngày tham gia"
+                    style="font-size: 31px; border-radius: 7px; width: 14rem"
+                    nzFormat="dd/MM/yyyy "
+                  ></nz-date-picker>
+                </nz-form-control>
+              </div>
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <!-- <input
+                    type="text"
+                    nz-input
+                    formControlName="lst"
+                    placeholder="Thời gian phỏng vấn"
+                  /> -->
+                  <nz-time-picker formControlName="time"></nz-time-picker>
+                </nz-form-control>
+              </div>
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="address"
+                    placeholder="Địa điểm phỏng vấn"
+                  />
+                </nz-form-control>
+              </div>
+              <div
+                [formGroup]="experienceForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="note"
+                    placeholder="Ghi chú"
+                  />
+                </nz-form-control>
+              </div>
             </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Thời gian phỏng vấn"
-                />
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Địa điểm phỏng vấn"
-                />
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Ghi chú"
-                />
-              </nz-form-control>
-            </div>
-          </div>
-        </nz-input-group>
-      </div>
-      <nz-divider
-        nzText="Thông tin tìm kiếm"
-        nzOrientation="left"
-        style="margin-bottom: 1rem"
-      ></nz-divider>
-      <div class="search">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Mã nhân viên"
-                />
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Tên nhân viên"
-                />
-              </nz-form-control>
-            </div>
-          </div>
-        </nz-input-group>
-        <button class="btn-search" nz-button (click)="showModal()">
-          Tìm kiếm
-          <span nz-icon nzType="search" nzTheme="outline"> </span>
+          </nz-input-group>
+        </div>
+      </ng-container>
+      <ng-container *nzModalFooter
+        ><button class="add-order-btn" nz-button (click)="lienHePVOk()">
+          Lưu
         </button>
-      </div>
-      <div class="list-table">
-        <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
-          <thead>
-            <tr>
-              <th nzWidth="70px" class="custom-table__header">Thao tác</th>
-              <th nzWidth="60px" class="custom-table__header">STT</th>
-
-              <th
-                nzWidth="80px"
-                nzSortKey="id"
-                class="text-center custom-table__header"
-              >
-                Mã nhân viên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="name"
-                class="text-center custom-table__header"
-              >
-                Họ tên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Chức danh
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Phòng ban
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center">
-                <!-- <app-button
-                  [iconType]="'delete'"
-                  [buttonType]="'text'"
-                  nz-popconfirm
-                  nzPopconfirmTitle="Are you sure?"
-                >
-                </app-button> -->
-                <label nz-checkbox></label>
-              </td>
-
-              <td style="text-align: center">1</td>
-              <td style="text-align: center">101010101</td>
-              <td style="text-align: center">Nguyễn Văn An</td>
-              <td style="text-align: center">Mobile Lead</td>
-              <td style="text-align: center">Mobile Lead</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="lienHePVOk()">
-        Lưu
-      </button>
-      <button class="add-order-btn" nz-button (click)="lienHePVCancel()">
-        Đóng
-      </button></ng-container
+        <button class="add-order-btn" nz-button (click)="lienHePVCancel()">
+          Đóng
+        </button></ng-container
+      >
+    </nz-modal>
+    <!-- Phỏng vấn -->
+    <button
+      class="btn-icon"
+      nz-button
+      (click)="phongVan()"
+      *ngIf="btnPhongVan"
+      [nz-tooltip]="'Phỏng Vấn'"
     >
-  </nz-modal>
-  <!-- Phỏng vấn -->
-  <button class="btn-icon" nz-button (click)="phongVan()" *ngIf="btnPhongVan">
-    <span class="danhgia" nz-icon nzType="dollar" nzTheme="outline"></span>
-  </button>
+      <span
+        class="danhgia"
+        nz-icon
+        nzType="usergroup-delete"
+        nzTheme="outline"
+      ></span>
+    </button>
 
-  <nz-modal nzWidth="890px" [(nzVisible)]="phongvan" nzTitle="Phỏng vấn">
-    <ng-container *nzModalContent>
-      <!-- <nz-input-group [nzSize]="'large'">
-        <div nz-row [nzGutter]="6">
-          <div
-            nz-form
-            [formGroup]="validateForm"
-            nz-col
-            nzSpan="7"
-            class="input-size col-4"
-          >
-            <nz-form-control>
-              <input
-                id="employeeName"
-                type="text"
-                nz-input
-                formControlName="lastName"
-                placeholder="Tên trường"
-              />
-            </nz-form-control>
+    <nz-modal nzWidth="890px" [(nzVisible)]="phongvan" nzTitle="Phỏng vấn">
+      <ng-container *nzModalContent>
+        <div class="content-info">
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div [formGroup]="pvForm" nz-col nzSpan="28" class="input-size">
+                <nz-form-label [nzSpan]="22" nzFor="email"
+                  >Mức lương mong muốn</nz-form-label
+                >
+
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="mucLuong"
+                    placeholder="Mức lương mong muốn"
+                  />
+                </nz-form-control>
+              </div>
+              <div [formGroup]="pvForm" nz-col nzSpan="28" class="input-size">
+                <nz-form-label [nzSpan]="26" nzFor="email"
+                  >Thời gian tăng lương mong muốn</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="timeTang"
+                    placeholder="Thơi gian tăng lương mong muốn"
+                  />
+                </nz-form-control>
+              </div>
+              <div [formGroup]="pvForm" nz-col nzSpan="28" class="input-size">
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Ghi chú</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="note"
+                    placeholder="Ghi chú"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+          </nz-input-group>
+        </div>
+      </ng-container>
+      <ng-container *nzModalFooter
+        ><button class="add-order-btn" nz-button (click)="phongVanOk()">
+          Lưu
+        </button>
+        <button class="add-order-btn" nz-button (click)="phongVanCancel()">
+          Đóng
+        </button></ng-container
+      >
+    </nz-modal>
+    <!-- Kết luận -->
+    <button
+      class="btn-icon"
+      nz-button
+      (click)="ketLuan()"
+      *ngIf="btnKetLuan"
+      [nz-tooltip]="'Kết Luận'"
+    >
+      <span class="danhgia" nz-icon nzType="user" nzTheme="outline"></span>
+    </button>
+
+    <nz-modal
+      nzWidth="890px"
+      [(nzVisible)]="ketLuans"
+      nzTitle="Kết luận phỏng vấn"
+    >
+      <ng-container *nzModalContent>
+        <p>Kết quả phỏng vấn</p>
+      </ng-container>
+      <ng-container *nzModalFooter
+        ><button class="add-order-btn" nz-button (click)="ketLuanOk()">
+          Đạt
+        </button>
+        <button class="add-order-btn" nz-button (click)="ketLuanCancel()">
+          Không Đạt
+        </button></ng-container
+      >
+    </nz-modal>
+
+    <nz-modal
+      nzWidth="890px"
+      [(nzVisible)]="danhGiaUVs"
+      nzTitle="Đánh giá ứng viên"
+    >
+      <ng-container *nzModalContent>
+        <div class="content-info">
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Mã cán bộ tuyển dụng</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="code"
+                    placeholder="Mã cán bộ tuyển dụng"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Tên cán bộ tuyển dụng</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="name"
+                    placeholder="Tên cán bộ tuyển dụng"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Chức danh</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="chuDanh"
+                    placeholder="Chức danh"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+          </nz-input-group>
+        </div>
+
+        <nz-divider
+          nzText="Đánh giá"
+          nzOrientation="left"
+          style="margin-bottom: 1rem"
+        ></nz-divider>
+        <div class="list-point">
+          <div class="point">
+            <div class="name">Năng lực</div>
+            <form [formGroup]="pointForm">
+              <div class="point">
+                <nz-rate formControlName="nangLuc" nzAllowHalf></nz-rate>
+              </div>
+            </form>
+          </div>
+          <div class="point">
+            <div class="name">Thái độ</div>
+            <form [formGroup]="pointForm">
+              <div class="point">
+                <nz-rate formControlName="thaiDo" nzAllowHalf></nz-rate>
+              </div>
+            </form>
+          </div>
+          <div class="point">
+            <div class="name">Kỹ năng mềm</div>
+            <form [formGroup]="pointForm">
+              <div class="point">
+                <nz-rate formControlName="kynang" nzAllowHalf></nz-rate>
+              </div>
+            </form>
           </div>
         </div>
-      </nz-input-group> -->
-      <div class="content-info">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <nz-form-label [nzSpan]="22" nzFor="email"
-                >Mức lương mong muốn</nz-form-label
-              >
+      </ng-container>
+      <ng-container *nzModalFooter
+        ><button class="add-order-btn" nz-button (click)="danhGiaUVOk()">
+          Lưu
+        </button>
+        <button class="add-order-btn" nz-button (click)="danhGiaUVCancel()">
+          Đóng
+        </button></ng-container
+      >
+    </nz-modal>
 
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Mức lương mong muốn"
-                />
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <nz-form-label [nzSpan]="26" nzFor="email"
-                >Thời gian tăng lương mong muốn</nz-form-label
-              >
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Thơi gian tăng lương mong muốn"
-                />
-              </nz-form-control>
-            </div>
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <nz-form-label [nzSpan]="12" nzFor="email">Ghi chú</nz-form-label>
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Ghi chú"
-                />
-              </nz-form-control>
-            </div>
-          </div>
-        </nz-input-group>
-      </div>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="phongVanOk()">
-        Lưu
-      </button>
-      <button class="add-order-btn" nz-button (click)="phongVanCancel()">
-        Đóng
-      </button></ng-container
+    <nz-modal
+      nzWidth="890px"
+      [(nzVisible)]="xemDanhGiaUV"
+      nzTitle="Xem đánh giá ứng viên"
     >
-  </nz-modal>
-  <!-- Kết luận -->
-  <button class="btn-icon" nz-button (click)="ketLuan()" *ngIf="btnKetLuan">
-    <span class="danhgia" nz-icon nzType="user" nzTheme="outline"></span>
+      <ng-container *nzModalContent>
+        <div class="content-info">
+          <nz-input-group [nzSize]="'large'">
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Mã cán bộ tuyển dụng</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="code"
+                    placeholder="Mã cán bộ tuyển dụng"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Tên cán bộ tuyển dụng</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="name"
+                    placeholder="Tên cán bộ tuyển dụng"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+            <div nz-row [nzGutter]="6">
+              <div
+                [formGroup]="employeeForm"
+                nz-col
+                nzSpan="28"
+                class="input-size"
+              >
+                <nz-form-label [nzSpan]="12" nzFor="email"
+                  >Chức danh</nz-form-label
+                >
+                <nz-form-control>
+                  <input
+                    [nzBorderless]="true"
+                    [readOnly]="true"
+                    type="text"
+                    nz-input
+                    formControlName="chuDanh"
+                    placeholder="Chức danh"
+                  />
+                </nz-form-control>
+              </div>
+            </div>
+          </nz-input-group>
+        </div>
+
+        <nz-divider
+          nzText="Đánh giá"
+          nzOrientation="left"
+          style="margin-bottom: 1rem"
+        ></nz-divider>
+        <div class="list-point">
+          <div class="point">
+            <div class="name">Năng lực</div>
+            <form [formGroup]="pointFormView">
+              <div class="point">
+                <nz-rate
+                  formControlName="nangLuc"
+                  [nzDisabled]="false"
+                  nzAllowHalf
+                ></nz-rate>
+              </div>
+            </form>
+          </div>
+          <div class="point">
+            <div class="name">Thái độ</div>
+            <form [formGroup]="pointFormView">
+              <div class="point">
+                <nz-rate
+                  formControlName="thaiDo"
+                  [nzDisabled]="false"
+                  nzAllowHalf
+                ></nz-rate>
+              </div>
+            </form>
+          </div>
+          <div class="point">
+            <div class="name">Kỹ năng mềm</div>
+            <form [formGroup]="pointFormView">
+              <div class="point">
+                <nz-rate
+                  formControlName="kynang"
+                  [nzDisabled]="false"
+                  nzAllowHalf
+                ></nz-rate>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *nzModalFooter>
+        <button class="add-order-btn" nz-button (click)="xemDanhGiaCancel()">
+          Đóng
+        </button></ng-container
+      >
+    </nz-modal>
+  </div>
+  <button *ngIf="btnHuyTC" class="btn-Huy" nz-button (click)="HUY()">
+    Hủy
   </button>
-
-  <nz-modal
-    nzWidth="890px"
-    [(nzVisible)]="ketLuans"
-    nzTitle="Kết luận phỏng vấn"
-  >
-    <ng-container *nzModalContent>
-      <p>Kết quả phỏng vấn</p>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="ketLuanOk()">
-        Đạt
-      </button>
-      <button class="add-order-btn" nz-button (click)="ketLuanCancel()">
-        Không Đạt
-      </button></ng-container
-    >
-  </nz-modal>
-
-  <nz-modal
-    nzWidth="890px"
-    [(nzVisible)]="danhGiaUVs"
-    nzTitle="Đánh giá ứng viên"
-  >
-    <ng-container *nzModalContent>
-      <div class="content-info">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Tìm kiếm mã nhân viên"
-                />
-              </nz-form-control>
-            </div>
-          </div>
-          <button class="btn-search" nz-button (click)="showModal()">
-            Tìm kiếm
-            <span nz-icon nzType="search" nzTheme="outline"> </span>
-          </button>
-        </nz-input-group>
-      </div>
-
-      <div class="list-table">
-        <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
-          <thead>
-            <tr>
-              <th nzWidth="70px" class="custom-table__header">Thao tác</th>
-              <th nzWidth="60px" class="custom-table__header">STT</th>
-
-              <th
-                nzWidth="80px"
-                nzSortKey="id"
-                class="text-center custom-table__header"
-              >
-                Mã nhân viên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="name"
-                class="text-center custom-table__header"
-              >
-                Họ tên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Chức danh
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Phòng ban
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center">
-                <!-- <app-button
-                  [iconType]="'delete'"
-                  [buttonType]="'text'"
-                  nz-popconfirm
-                  nzPopconfirmTitle="Are you sure?"
-                >
-                </app-button> -->
-                <label nz-checkbox></label>
-              </td>
-
-              <td style="text-align: center">1</td>
-              <td style="text-align: center">101010101</td>
-              <td style="text-align: center">Nguyễn Văn An</td>
-              <td style="text-align: center">Mobile Lead</td>
-              <td style="text-align: center">Mobile Lead</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="danhGiaUVOk()">
-        Lưu
-      </button>
-      <button class="add-order-btn" nz-button (click)="danhGiaUVCancel()">
-        Đóng
-      </button></ng-container
-    >
-  </nz-modal>
-
-  <nz-modal
-    nzWidth="890px"
-    [(nzVisible)]="xemDanhGiaUV"
-    nzTitle="Xem đánh giá ứng viên"
-  >
-    <ng-container *nzModalContent>
-      <div class="content-info">
-        <nz-input-group [nzSize]="'large'">
-          <div nz-row [nzGutter]="6">
-            <div
-              [formGroup]="experienceForm"
-              nz-col
-              nzSpan="28"
-              class="input-size"
-            >
-              <!-- <nz-form-label [nzSpan]="12" nzFor="email">Quê quán</nz-form-label> -->
-              <nz-form-control>
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="lst"
-                  placeholder="Tìm kiếm mã nhân viên"
-                />
-              </nz-form-control>
-            </div>
-          </div>
-          <button class="btn-search" nz-button (click)="showModal()">
-            Tìm kiếm
-            <span nz-icon nzType="search" nzTheme="outline"> </span>
-          </button>
-        </nz-input-group>
-      </div>
-
-      <div class="list-table">
-        <nz-table [nzFrontPagination]="false" nzTableLayout="fixed">
-          <thead>
-            <tr>
-              <th nzWidth="70px" class="custom-table__header">Thao tác</th>
-              <th nzWidth="60px" class="custom-table__header">STT</th>
-
-              <th
-                nzWidth="80px"
-                nzSortKey="id"
-                class="text-center custom-table__header"
-              >
-                Mã nhân viên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="name"
-                class="text-center custom-table__header"
-              >
-                Họ tên
-              </th>
-              <th
-                nzWidth="80px"
-                nzSortKey="price"
-                class="text-center custom-table__header"
-              >
-                Chức danh
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center">
-                <!-- <app-button
-                  [iconType]="'delete'"
-                  [buttonType]="'text'"
-                  nz-popconfirm
-                  nzPopconfirmTitle="Are you sure?"
-                >
-                </app-button> -->
-                <label nz-checkbox></label>
-              </td>
-
-              <td style="text-align: center">1</td>
-              <td style="text-align: center">101010101</td>
-              <td style="text-align: center">Nguyễn Văn An</td>
-              <td style="text-align: center">Mobile Lead</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div>
-    </ng-container>
-    <ng-container *nzModalFooter
-      ><button class="add-order-btn" nz-button (click)="xemDanhGiaOk()">
-        Lưu
-      </button>
-      <button class="add-order-btn" nz-button (click)="xemDanhGiaCancel()">
-        Đóng
-      </button></ng-container
-    >
-  </nz-modal>
 </div>

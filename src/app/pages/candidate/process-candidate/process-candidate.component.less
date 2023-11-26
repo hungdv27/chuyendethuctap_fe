@@ -1,8 +1,15 @@
+.scoll {
+  height: 560px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
 .steps {
   background: #fff;
   border-radius: 4px;
   // padding-left: 2rem;
-  height: 35%;
+  height: 11%;
 }
 
 .candi-info {
@@ -112,14 +119,15 @@ input {
 }
 
 .btn-Huy {
-  border-color: #7d8184;
+  border-color: red;
   // color: #fff;
   border-radius: 5px;
   height: 35px;
   width: 6rem;
   margin: 10px;
-  background-color: #7d8184;
+  background-color: red;
   color: #fff;
+  margin-left: 55rem;
 }
 
 .hand {
@@ -190,4 +198,18 @@ input {
 
 .appr {
   display: flex;
+}
+
+.list-point {
+  .point {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+
+    .name {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 }

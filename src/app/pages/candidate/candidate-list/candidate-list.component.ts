@@ -25,4 +25,7 @@ export class CandidateListComponent implements OnInit {
       this.checkRole = false;
     }
   }
+  back() {
+    this.router.navigate(['person-candidate']);
+  }
 }

@@ -1,6 +1,6 @@
 <div>
-  <h1 class="title">DANH SÁCH CÁN BỘ TUYỂN DỤNG</h1>
-  <div nz-row [hidden]="isHidden" class="search">
+  <h1 class="title" style="margin-bottom: 5rem">DANH SÁCH CÁN BỘ TUYỂN DỤNG</h1>
+  <!-- <div nz-row [hidden]="isHidden" class="search">
     <nz-input-group [nzSize]="'large'">
       <div nz-row [nzGutter]="8">
         <div [formGroup]="validateForm" nz-col nzSpan="5">
@@ -20,9 +20,9 @@
             formControlName="employeeName"
             placeholder="Họ và tên"
           />
-        </div>
+        </div> -->
 
-        <!-- <div [formGroup]="validateForm" nz-col nzSpan="5">
+  <!-- <div [formGroup]="validateForm" nz-col nzSpan="5">
           <nz-date-picker
             formControlName="email"
             style="font-size: 31px; border-radius: 7px; width: 15rem"
@@ -31,7 +31,7 @@
             nzFormat="dd/MM/yyyy "
           ></nz-date-picker>
         </div> -->
-        <!-- <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
+  <!-- <div [formGroup]="validateForm" nz-col nzSpan="5" class="input-size">
 
           <nz-select
             style="width: 200px; border-radius: 10px"
@@ -45,11 +45,11 @@
             <nz-option nzValue="2" nzLabel="Đã nghỉ làm"></nz-option>
           </nz-select>
         </div> -->
-      </div>
+  <!-- </div>
     </nz-input-group>
-  </div>
+  </div> -->
 
-  <nz-row nzJustify="space-between">
+  <!-- <nz-row nzJustify="space-between">
     <nz-row nzJustify="start">
       <button class="search-order-btn" nz-button (click)="search()">
         Tìm kiếm
@@ -62,13 +62,13 @@
         nzTheme="outline"
         (click)="resetForm()"
       ></em>
-    </nz-row>
-    <button class="add-order-btn" nz-button (click)="createProduct()">
-      Thêm mới
-      <!-- <span nz-icon nzType="plus" nzTheme="outline"></span> -->
-      <span nz-icon nzType="user-add" nzTheme="outline"> </span>
-    </button>
-  </nz-row>
+    </nz-row> -->
+  <!-- <button class="add-order-btn" nz-button (click)="createProduct()">
+      Thêm mới -->
+  <!-- <span nz-icon nzType="plus" nzTheme="outline"></span> -->
+  <!-- <span nz-icon nzType="user-add" nzTheme="outline"> </span>
+    </button> -->
+  <!-- </nz-row> -->
 
   <!-- <div nz-row class="mb-0" style="width: 100%">
     <div class="list__container" style="width: inherit">
@@ -82,7 +82,7 @@
     >
       <thead>
         <tr>
-          <th nzWidth="70px" class="custom-table__header">Thao tác</th>
+          <!-- <th nzWidth="70px" class="custom-table__header">Thao tác</th> -->
           <th nzWidth="40px" class="custom-table__header">STT</th>
 
           <th
@@ -99,7 +99,7 @@
           >
             Họ và tên
           </th>
-          <th
+          <!-- <th
             nzWidth="120px"
             nzSortKey="price"
             class="text-center custom-table__header"
@@ -112,7 +112,7 @@
             class="text-center custom-table__header"
           >
             Giới tính
-          </th>
+          </th> -->
           <th
             nzWidth="120px"
             nzSortKey="quantity"
@@ -128,7 +128,7 @@
           >
             Chức danh
           </th>
-          <th
+          <!-- <th
             nzWidth="120px"
             nzSortKey="describe"
             class="text-center custom-table__header"
@@ -141,50 +141,45 @@
             class="text-center custom-table__header"
           >
             Vị trí
-          </th>
+          </th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of lstData.content; let idex = index">
-          <td style="text-align: center">
+        <tr *ngFor="let data of lstData; let idex = index">
+          <!-- <td style="text-align: center">
             <app-button
               [iconType]="'unordered-list'"
               [buttonType]="'text'"
               (btnClick)="editProduct(data.idUser)"
             ></app-button>
-            <!-- <app-button
-              [iconType]="'delete'"
-              [buttonType]="'text'"
-              (btnClick)="deleteProduct(data.id)"
-            ></app-button> -->
-          </td>
+
+          </td> -->
           <td style="text-align: center">
-            {{ lstData.currentPage * lstData.size + idex + 1 - 10 }}
+            {{ data.id }}
           </td>
 
-          <td style="text-align: center" [nz-tooltip]="data.idUser">
-            {{ data.idUser }}
+          <td style="text-align: center" [nz-tooltip]="data.employeeCode">
+            {{ data.employeeCode }}
           </td>
-          <td style="text-align: center" [nz-tooltip]="data.name">
-            {{ data.name }}
+          <td style="text-align: center" [nz-tooltip]="data.fullName">
+            {{ data.fullName }}
           </td>
-          <td style="text-align: center" [nz-tooltip]="data.birth">
+          <!-- <td style="text-align: center" [nz-tooltip]="data.birth">
             {{ data.birth | date : "dd/MM/yyyy " }}
           </td>
           <td style="text-align: center" [nz-tooltip]="data.gender">
             {{ data.gender }}
+          </td> -->
+          <td style="text-align: center" [nz-tooltip]="data.department">
+            {{ data.department }}
           </td>
-          <td style="text-align: center" [nz-tooltip]="data.address">
-            {{ data.address }}
+          <td style="text-align: center" [nz-tooltip]="data.jobTitle">
+            {{ data.jobTitle }}
           </td>
-          <td style="text-align: center" [nz-tooltip]="data.address">
-            {{ data.address }}
-          </td>
-          <td style="text-align: center" [nz-tooltip]="data.address">
+          <!-- <td style="text-align: center" [nz-tooltip]="data.address">
             {{ data.address }}
           </td>
           <td style="text-align: center" [nz-tooltip]="data.employeeName">
-            <!-- <nz-tag [nzColor]="'orange'">orange</nz-tag> -->
 
             <ng-container
               [ngTemplateOutlet]="link"
@@ -193,7 +188,7 @@
             <ng-template #link let-item="item">
               <nz-tag [nzColor]="item?.className">{{ item?.label }}</nz-tag>
             </ng-template>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </nz-table>

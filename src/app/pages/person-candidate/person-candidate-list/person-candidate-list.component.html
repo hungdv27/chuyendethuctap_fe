@@ -41,23 +41,22 @@
         </div>
         <div [formGroup]="validateForm" nz-col nzSpan="5">
           <input
-          [(ngModel)]="searchtextKyNang"
-          type="text"
-          nz-input
-          formControlName="employeeName"
-          placeholder="Kỹ năng"
-        >
+            [(ngModel)]="searchtextKyNang"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+            placeholder="Kỹ năng"
+          />
         </div>
 
         <div [formGroup]="validateForm" nz-col nzSpan="5">
           <input
-          [(ngModel)]="searchtextNumberOf"
-          type="text"
-          nz-input
-          formControlName="employeeName"
-          placeholder="Số năm kinh nghiệm"
-        >
-
+            [(ngModel)]="searchtextNumberOf"
+            type="text"
+            nz-input
+            formControlName="employeeName"
+            placeholder="Số năm kinh nghiệm"
+          />
         </div>
         <div [formGroup]="validateForm" nz-col nzSpan="5">
           <nz-select
@@ -83,11 +82,32 @@
             formControlName="employeeName"
             nzPlaceHolder="Trạng thái"
           >
+            <nz-option
+              nzValue="CHO_DANH_GIA"
+              nzLabel="Chờ đánh giá CV"
+            ></nz-option>
             <nz-option nzValue="DANH_GIA" nzLabel="Đánh giá CV"></nz-option>
-            <nz-option nzValue="PV" nzLabel="Phỏng vấn"></nz-option>
-            <nz-option nzValue="TV" nzLabel="Tham vấn lương"></nz-option>
-            <nz-option nzValue="OFFER" nzLabel="Nhận offer"></nz-option>
-            <nz-option nzValue="CANCEL" nzLabel="Từ chối"></nz-option>
+            <nz-option
+              nzValue="PHONG_VAN"
+              nzLabel="Lên lịch phỏng vấn"
+            ></nz-option>
+            <nz-option
+              nzValue="THAM_GIA_PHONG_VAN"
+              nzLabel="Tham gia phỏng vấn"
+            ></nz-option>
+            <nz-option
+              nzValue="KET_QUA_PHONG_VAN"
+              nzLabel="Phỏng vấn"
+            ></nz-option>
+            <nz-option
+              nzValue="KET_LUAN_DONG_Y"
+              nzLabel="Đạt phỏng vấn"
+            ></nz-option>
+            <nz-option
+              nzValue="KET_LUAN_TU_CHOI"
+              nzLabel="Không đạt phỏng vấn"
+            ></nz-option>
+            <nz-option nzValue="TU_CHOI" nzLabel="Từ chối"></nz-option>
           </nz-select>
         </div>
       </div>
@@ -196,7 +216,7 @@
             ></app-button>
           </td>
           <td style="text-align: center">
-            {{ lstData.totalPages * lstData.size + idex + 1 -10 }}
+            {{ lstData.totalPages * lstData.size + idex + 1 - 20 }}
             <!-- lstData.currentPage * lstData.size + i + 1 -->
           </td>
 
